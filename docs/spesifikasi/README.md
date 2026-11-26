@@ -8,6 +8,16 @@ Baseline: commit `c776a7c`, tag `baseline-before-audit-fixes`. Branch: `work/rul
 - [Matriks aturan](matriks-aturan.md): inventaris 63 aturan aktif, pemetaan aturan lama, sumber tercatat, dan status tinjauan.
 - [Rencana pengujian](rencana-pengujian.md): skenario dengan hasil yang diharapkan sebelum implementasi.
 
+## Cakupan implementasi untuk presentasi
+
+Presentasi kelompok terdiri dari empat orang dengan durasi maksimal 20 menit. Prioritas implementasi dibatasi pada validasi penghasilan dan jumlah anggota keluarga wajib, serta desil wajib jika terdata P3KE. Angka harus integer, penghasilan minimal 0, anggota keluarga minimal 1, desil 1–10. Input yang tidak memenuhi kontrak mendapat HTTP 422 sebelum mesin aturan dipanggil.
+
+Alur empat langkah, 63 aturan, nilai bawaan lain, dan bentuk keputusan tetap seperti baseline. Rancangan boolean tiga keadaan, status Perlu_Dilengkapi, migrasi hasil, serta perubahan domain dalam dokumen berikut adalah pengembangan lanjutan, bukan syarat demo. Penanganan B-03/T6 tetap mengikuti baseline.
+
+Pengujian validasi: `cd backend && uv run python -m unittest discover -s tests -v`. Pengujian ini tidak menjalankan startup/seed dan tidak mengakses database.
+
+Pemeriksaan integrasi pratinjau: T1 Layak Prioritas 1; T4 Tidak_Layak karena kelas karyawan; T3 Layak melalui pertimbangan khusus. Ketiganya menghasilkan tepat satu keputusan akhir. Jumlah aturan tetap 63 dan jumlah profil tersimpan tidak berubah oleh pemeriksaan pratinjau.
+
 ## Keputusan ruang lingkup
 
 | ID | Pertanyaan | Posisi saat ini | Kriteria penyelesaian |

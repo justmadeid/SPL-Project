@@ -3,7 +3,7 @@ from typing import Literal, Optional
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 from . import config, db, engine, llm, ontology, presets
 
@@ -39,10 +39,10 @@ class FormInput(BaseModel):
     pkh: bool = False
     kks: bool = False
     terdata_p3ke: bool = False
-    desil_p3ke: Optional[int] = Field(None, ge=1, le=10)
+    desil_p3ke: Optional[int] = Field(None, ge=1, le=10, strict=True)
     panti: bool = False
-    penghasilan: int = Field(0, ge=0)
-    anggota_keluarga: int = Field(1, ge=1)
+    penghasilan: int = Field(..., ge=0, strict=True)
+    anggota_keluarga: int = Field(..., ge=1, strict=True)
     sktm: bool = False
     bukti_sktm: bool = False
     asal_3t: bool = False
@@ -56,6 +56,13 @@ class FormInput(BaseModel):
     rumpun_prodi: str = "Lainnya"
     jenjang: Literal["Sarjana", "Diploma_IV", "Diploma_III", "Diploma_II", "Diploma_I"] = "Sarjana"
     zona: Literal["A", "B", "C", "D", "E"] = "C"
+
+
+    @model_validator(mode="after")
+    def validasi_desil_p3ke(self):
+        if self.terdata_p3ke and self.desil_p3ke is None:
+            raise ValueError("Desil P3KE wajib diisi jika terdata P3KE.")
+        return self
 
 
 class TeksInput(BaseModel):
