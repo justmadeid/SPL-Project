@@ -14,4 +14,6 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
 GEMINI_FALLBACK_MODELS = [m.strip() for m in os.getenv("GEMINI_FALLBACK_MODELS", "gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-3.5-flash").split(",") if m.strip()]
 
-LLM_ENABLED = bool(GEMINI_API_KEY)
+PUBLIC_DEMO = os.getenv("PUBLIC_DEMO", "false").lower() == "true"
+ENABLE_SEED_ENDPOINT = os.getenv("ENABLE_SEED_ENDPOINT", "false").lower() == "true"
+LLM_ENABLED = bool(GEMINI_API_KEY) and not PUBLIC_DEMO

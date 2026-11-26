@@ -1,8 +1,11 @@
 from contextlib import asynccontextmanager
 from typing import Literal, Optional
+from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, model_validator
 
 from . import config, db, engine, llm, ontology, presets
@@ -11,9 +14,17 @@ from . import config, db, engine, llm, ontology, presets
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     try:
-        ontology.seed()
-        n = engine.inferensi_ulang_semua()
-        print(f"[kipk] Ontologi & basis aturan dimuat ke Neo4j; inferensi ulang {n} pendaftar")
+        if config.PUBLIC_DEMO:
+            # Aura khusus demo: seed hanya sekali, bukan setiap cold start Render.
+            count = db.run("MATCH (r:Rule) RETURN count(r) AS n")[0]["n"]
+            if count == 0:
+                ontology.seed()
+            elif count != len(engine.RULES):
+                raise RuntimeError("Jumlah aturan database demo tidak sesuai versi aplikasi")
+        else:
+            ontology.seed()
+            n = engine.inferensi_ulang_semua()
+            print(f"[kipk] Ontologi & basis aturan dimuat ke Neo4j; inferensi ulang {n} pendaftar")
     except Exception as e:  # tetap jalan agar /api/health bisa memberi tahu masalahnya
         print(f"[kipk] Gagal memuat ontologi ke Neo4j: {e}")
     yield
@@ -80,6 +91,8 @@ class TanyaInput(BaseModel):
 
 
 def _llm(fn, *a):
+    if not config.LLM_ENABLED:
+        raise HTTPException(503, "Fitur AI tidak aktif pada demo publik. Gunakan formulir atau profil contoh.")
     try:
         return fn(*a)
     except llm.LLMNonaktif as e:
@@ -102,6 +115,8 @@ def health():
 
 @app.post("/api/seed")
 def seed():
+    if config.PUBLIC_DEMO or not config.ENABLE_SEED_ENDPOINT:
+        raise HTTPException(403, "Reset basis pengetahuan tidak diizinkan.")
     ontology.seed()
     engine.inferensi_ulang_semua()
     return engine.statistik()
@@ -158,3 +173,29 @@ def llm_tanya(body: TanyaInput):
     h = engine.hasil(body.hasil_id) if body.hasil_id else None
     jawab = _llm(llm.tanya, [m.model_dump() for m in body.pesan], engine.daftar_aturan(), h)
     return {"teks": jawab}
+
+
+@app.get("/api/ready")
+def ready():
+    try:
+        count = db.run("MATCH (r:Rule) RETURN count(r) AS n")[0]["n"]
+        if count != len(engine.RULES):
+            raise RuntimeError("Basis aturan belum siap")
+    except Exception:
+        raise HTTPException(503, "Database demo belum siap")
+    return {"ok": True}
+
+
+# Hasil build React dilayani dari origin yang sama dengan /api.
+FRONTEND_DIST = Path(__file__).resolve().parents[2] / "frontend" / "dist"
+if (FRONTEND_DIST / "index.html").is_file():
+    for folder in ("assets", "images"):
+        if (FRONTEND_DIST / folder).is_dir():
+            app.mount(f"/{folder}", StaticFiles(directory=FRONTEND_DIST / folder), name=folder)
+
+    @app.get("/", include_in_schema=False)
+    @app.get("/cek", include_in_schema=False)
+    @app.get("/aturan", include_in_schema=False)
+    @app.get("/hasil/{pid}", include_in_schema=False)
+    def frontend(pid: str = ""):
+        return FileResponse(FRONTEND_DIST / "index.html")

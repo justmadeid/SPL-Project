@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: pintu-kuliah-demo
+    runtime: docker
+    plan: free
+    branch: deploy/render-demo
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/ready
+    envVars:
+      - key: PUBLIC_DEMO
+        value: "true"
+      - key: ENABLE_SEED_ENDPOINT
+        value: "false"
+      - key: NEO4J_URI
+        sync: false
+      - key: NEO4J_USER
+        value: neo4j
+      - key: NEO4J_PASSWORD
+        sync: false
+      - key: NEO4J_DATABASE
+        value: neo4j
