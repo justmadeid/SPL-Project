@@ -1,0 +1,3436 @@
+# ABox ontologi KIP Kuliah (Pintu Kuliah), diekspor dari Neo4j oleh ekspor_abox.py.
+# Jangan disunting manual; jalankan ulang skripnya. TBox ada di tbox.ttl.
+# Isi: 11 kelas referensi, 12 pendaftar (node terbaru per nama), 376 relasi.
+
+@prefix kip: <http://pintukuliah.local/ontologi#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+kip:KondisiKhusus_K-3T a kip:KondisiKhusus ;
+    rdfs:label "Berasal dari daerah 3T" ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-KHUSUS ;
+    kip:kode "K-3T" ;
+    kip:nama "Berasal dari daerah 3T" ;
+    kip:properti "asal_3t" .
+
+kip:KondisiKhusus_K-BENCANA a kip:KondisiKhusus ;
+    rdfs:label "Terdampak bencana alam" ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-KHUSUS ;
+    kip:kode "K-BENCANA" ;
+    kip:nama "Terdampak bencana alam" ;
+    kip:properti "bencana" .
+
+kip:KondisiKhusus_K-HAM a kip:KondisiKhusus ;
+    rdfs:label "Korban pelanggaran HAM berat" ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-KHUSUS ;
+    kip:kode "K-HAM" ;
+    kip:nama "Korban pelanggaran HAM berat" ;
+    kip:properti "korban_ham" .
+
+kip:KondisiKhusus_K-KEKERASAN a kip:KondisiKhusus ;
+    rdfs:label "Korban kekerasan" ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-KHUSUS ;
+    kip:kode "K-KEKERASAN" ;
+    kip:nama "Korban kekerasan" ;
+    kip:properti "korban_kekerasan" .
+
+kip:KondisiKhusus_K-KONFLIK a kip:KondisiKhusus ;
+    rdfs:label "Terdampak konflik sosial" ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-KHUSUS ;
+    kip:kode "K-KONFLIK" ;
+    kip:nama "Terdampak konflik sosial" ;
+    kip:properti "konflik" .
+
+kip:KondisiKhusus_K-TKI a kip:KondisiKhusus ;
+    rdfs:label "Anak TKI di daerah perbatasan" ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-KHUSUS ;
+    kip:kode "K-TKI" ;
+    kip:nama "Anak TKI di daerah perbatasan" ;
+    kip:properti "anak_tki" .
+
+kip:Rule_E-04 a kip:Rule ;
+    rdfs:label "Tidak layak: ekonomi & kondisi khusus" ;
+    kip:MENYIMPULKAN kip:Keputusan_TIDAK_LAYAK ;
+    kip:id "E-04" ;
+    kip:jika "Administrasi memenuhi DAN tidak memenuhi syarat ekonomi DAN tidak ada kondisi khusus" ;
+    kip:lapis "E" ;
+    kip:lapis_nama "Keputusan akhir" ;
+    kip:maka "Keputusan_Akhir = Tidak_Layak" ;
+    kip:nama "Tidak layak: ekonomi & kondisi khusus" ;
+    kip:strata 4 ;
+    kip:urut 33 .
+
+kip:Sumber_PM a kip:Sumber ;
+    rdfs:label "Permendikbud No. 10 Tahun 2020 tentang Program Indonesia Pintar" ;
+    kip:judul "Permendikbud No. 10 Tahun 2020 tentang Program Indonesia Pintar" ;
+    kip:kode "PM" ;
+    kip:penerbit "Kemendikbud" ;
+    kip:tahun 2020 .
+
+kip:AlasanGugur_B-05 a kip:AlasanGugur ;
+    rdfs:label "Program studi belum terakreditasi" ;
+    kip:kode "B-05" ;
+    kip:teks "Program studi belum terakreditasi" .
+
+kip:BiayaPendidikan_UKT-3 a kip:BiayaPendidikan ;
+    rdfs:label "Akreditasi Baik/C" ;
+    kip:kedokteran false ;
+    kip:kode "UKT-3" ;
+    kip:maks 2400000 ;
+    kip:nama "Akreditasi Baik/C" ;
+    kip:tingkat 3 .
+
+kip:Jenjang_Diploma_I a kip:Jenjang ;
+    rdfs:label "Diploma I" ;
+    kip:kode "Diploma_I" ;
+    kip:maks_semester 2 ;
+    kip:nama "Diploma I" .
+
+kip:Jenjang_Diploma_II a kip:Jenjang ;
+    rdfs:label "Diploma II" ;
+    kip:kode "Diploma_II" ;
+    kip:maks_semester 4 ;
+    kip:nama "Diploma II" .
+
+kip:Jenjang_Diploma_III a kip:Jenjang ;
+    rdfs:label "Diploma III" ;
+    kip:kode "Diploma_III" ;
+    kip:maks_semester 6 ;
+    kip:nama "Diploma III" .
+
+kip:Jenjang_Diploma_IV a kip:Jenjang ;
+    rdfs:label "Diploma IV" ;
+    kip:kode "Diploma_IV" ;
+    kip:maks_semester 8 ;
+    kip:nama "Diploma IV" .
+
+kip:KategoriEkonomi_P6 a kip:KategoriEkonomi ;
+    rdfs:label "Miskin/rentan miskin P3KE desil 1–3 di PTS" ;
+    kip:BERLAKU_DI kip:PTS ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-P3KE ;
+    kip:kode "P6" ;
+    kip:nama "Miskin/rentan miskin P3KE desil 1–3 di PTS" ;
+    kip:prioritas 6 .
+
+kip:KondisiKhusus_K-PAPUA a kip:KondisiKhusus ;
+    rdfs:label "Orang asli Papua" ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-KHUSUS ;
+    kip:kode "K-PAPUA" ;
+    kip:nama "Orang asli Papua" ;
+    kip:properti "asli_papua" .
+
+kip:ProgramProfesi_PRO-APT a kip:ProgramProfesi ;
+    rdfs:label "Profesi Apoteker" ;
+    kip:kode "PRO-APT" ;
+    kip:maks_semester 2 ;
+    kip:nama "Profesi Apoteker" ;
+    kip:rumpun "Farmasi" .
+
+kip:ProgramProfesi_PRO-BIDAN a kip:ProgramProfesi ;
+    rdfs:label "Profesi Bidan" ;
+    kip:kode "PRO-BIDAN" ;
+    kip:maks_semester 2 ;
+    kip:nama "Profesi Bidan" ;
+    kip:rumpun "Kebidanan" .
+
+kip:ProgramProfesi_PRO-DRG a kip:ProgramProfesi ;
+    rdfs:label "Profesi Dokter Gigi" ;
+    kip:kode "PRO-DRG" ;
+    kip:maks_semester 4 ;
+    kip:nama "Profesi Dokter Gigi" ;
+    kip:rumpun "Kedokteran_Gigi" .
+
+kip:ProgramProfesi_PRO-DRH a kip:ProgramProfesi ;
+    rdfs:label "Profesi Dokter Hewan" ;
+    kip:kode "PRO-DRH" ;
+    kip:maks_semester 4 ;
+    kip:nama "Profesi Dokter Hewan" ;
+    kip:rumpun "Kedokteran_Hewan" .
+
+kip:ProgramProfesi_PRO-NERS a kip:ProgramProfesi ;
+    rdfs:label "Profesi Ners" ;
+    kip:kode "PRO-NERS" ;
+    kip:maks_semester 2 ;
+    kip:nama "Profesi Ners" ;
+    kip:rumpun "Keperawatan" .
+
+kip:ProgramProfesi_PRO-PPG a kip:ProgramProfesi ;
+    rdfs:label "Pendidikan Profesi Guru" ;
+    kip:kode "PRO-PPG" ;
+    kip:maks_semester 2 ;
+    kip:nama "Pendidikan Profesi Guru" ;
+    kip:rumpun "Kependidikan" .
+
+kip:Rule_A-04 a kip:Rule ;
+    rdfs:label "Peringkat akreditasi tingkat 3" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:id "A-04" ;
+    kip:jika "Akreditasi prodi ∈ {Baik / C}" ;
+    kip:lapis "A" ;
+    kip:lapis_nama "Fakta pembantu" ;
+    kip:maka "Prodi terakreditasi, peringkat tingkat 3" ;
+    kip:nama "Peringkat akreditasi tingkat 3" ;
+    kip:strata 1 ;
+    kip:urut 3 .
+
+kip:Rule_A-05 a kip:Rule ;
+    rdfs:label "Prodi belum terakreditasi" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:id "A-05" ;
+    kip:jika "Akreditasi prodi = Belum terakreditasi" ;
+    kip:lapis "A" ;
+    kip:lapis_nama "Fakta pembantu" ;
+    kip:maka "Prodi_Terakreditasi = False" ;
+    kip:nama "Prodi belum terakreditasi" ;
+    kip:strata 1 ;
+    kip:urut 4 .
+
+kip:Rule_C-06 a kip:Rule ;
+    rdfs:label "Prioritas 6: P3KE desil ≤ 3 di PTS" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:KategoriEkonomi_P6 ;
+    kip:id "C-06" ;
+    kip:jika "Rentan_Miskin_P3KE DAN kampus PTS" ;
+    kip:lapis "C" ;
+    kip:lapis_nama "Prioritas ekonomi" ;
+    kip:maka "Memenuhi_Prioritas += 6" ;
+    kip:nama "Prioritas 6: P3KE desil ≤ 3 di PTS" ;
+    kip:strata 2 ;
+    kip:urut 23 .
+
+kip:Rule_F-04 a kip:Rule ;
+    rdfs:label "Dokumen prioritas 7" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:Dokumen_DOK-PANTI ;
+    kip:id "F-04" ;
+    kip:jika "Layak DAN Prioritas = 7" ;
+    kip:lapis "F" ;
+    kip:lapis_nama "Dokumen wajib" ;
+    kip:maka "Wajib_Dokumen += DOK-PANTI" ;
+    kip:nama "Dokumen prioritas 7" ;
+    kip:strata 5 ;
+    kip:urut 38 .
+
+kip:Rule_F-05 a kip:Rule ;
+    rdfs:label "Dokumen prioritas 8 (penghasilan)" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:Dokumen_DOK-PENGHASILAN ;
+    kip:id "F-05" ;
+    kip:jika "Layak DAN Prioritas = 8 DAN Miskin_Penghasilan" ;
+    kip:lapis "F" ;
+    kip:lapis_nama "Dokumen wajib" ;
+    kip:maka "Wajib_Dokumen += DOK-PENGHASILAN" ;
+    kip:nama "Dokumen prioritas 8 (penghasilan)" ;
+    kip:strata 5 ;
+    kip:urut 39 .
+
+kip:Rule_G-05 a kip:Rule ;
+    rdfs:label "Biaya hidup zona A" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:ZonaBiayaHidup_A ;
+    kip:id "G-05" ;
+    kip:jika "Layak DAN zona kampus = A" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Beasiswa_Biaya_Hidup = Rp 800.000 / bulan (Rp 4.800.000 / semester)" ;
+    kip:nama "Biaya hidup zona A" ;
+    kip:strata 5 ;
+    kip:urut 46 .
+
+kip:Rule_G-06 a kip:Rule ;
+    rdfs:label "Biaya hidup zona B" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:ZonaBiayaHidup_B ;
+    kip:id "G-06" ;
+    kip:jika "Layak DAN zona kampus = B" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Beasiswa_Biaya_Hidup = Rp 950.000 / bulan (Rp 5.700.000 / semester)" ;
+    kip:nama "Biaya hidup zona B" ;
+    kip:strata 5 ;
+    kip:urut 47 .
+
+kip:Rule_G-11 a kip:Rule ;
+    rdfs:label "Masa beasiswa Diploma IV" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:Jenjang_Diploma_IV ;
+    kip:id "G-11" ;
+    kip:jika "Layak DAN jenjang = Diploma IV" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Masa_Beasiswa_Maks = 8 semester" ;
+    kip:nama "Masa beasiswa Diploma IV" ;
+    kip:strata 5 ;
+    kip:urut 52 .
+
+kip:Rule_G-12 a kip:Rule ;
+    rdfs:label "Masa beasiswa Diploma III" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:Jenjang_Diploma_III ;
+    kip:id "G-12" ;
+    kip:jika "Layak DAN jenjang = Diploma III" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Masa_Beasiswa_Maks = 6 semester" ;
+    kip:nama "Masa beasiswa Diploma III" ;
+    kip:strata 5 ;
+    kip:urut 53 .
+
+kip:Rule_G-13 a kip:Rule ;
+    rdfs:label "Masa beasiswa Diploma II" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:Jenjang_Diploma_II ;
+    kip:id "G-13" ;
+    kip:jika "Layak DAN jenjang = Diploma II" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Masa_Beasiswa_Maks = 4 semester" ;
+    kip:nama "Masa beasiswa Diploma II" ;
+    kip:strata 5 ;
+    kip:urut 54 .
+
+kip:Rule_G-14 a kip:Rule ;
+    rdfs:label "Masa beasiswa Diploma I" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:Jenjang_Diploma_I ;
+    kip:id "G-14" ;
+    kip:jika "Layak DAN jenjang = Diploma I" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Masa_Beasiswa_Maks = 2 semester" ;
+    kip:nama "Masa beasiswa Diploma I" ;
+    kip:strata 5 ;
+    kip:urut 55 .
+
+kip:ZonaBiayaHidup_A a kip:ZonaBiayaHidup ;
+    kip:per_bulan 800000 ;
+    kip:zona "A" .
+
+kip:ZonaBiayaHidup_B a kip:ZonaBiayaHidup ;
+    kip:per_bulan 950000 ;
+    kip:zona "B" .
+
+kip:AlasanGugur_B-03 a kip:AlasanGugur ;
+    rdfs:label "Tahun lulus setelah tahun pendaftaran (data tidak valid)" ;
+    kip:kode "B-03" ;
+    kip:teks "Tahun lulus setelah tahun pendaftaran (data tidak valid)" .
+
+kip:AlasanGugur_B-04 a kip:AlasanGugur ;
+    rdfs:label "Belum/tidak lulus seleksi masuk perguruan tinggi" ;
+    kip:kode "B-04" ;
+    kip:teks "Belum/tidak lulus seleksi masuk perguruan tinggi" .
+
+kip:AlasanGugur_B-06 a kip:AlasanGugur ;
+    rdfs:label "Diterima di kelas eksekutif, khusus, atau karyawan" ;
+    kip:kode "B-06" ;
+    kip:teks "Diterima di kelas eksekutif, khusus, atau karyawan" .
+
+kip:AlasanGugur_B-07 a kip:AlasanGugur ;
+    rdfs:label "Sedang menerima beasiswa atau bantuan biaya pendidikan lain" ;
+    kip:kode "B-07" ;
+    kip:teks "Sedang menerima beasiswa atau bantuan biaya pendidikan lain" .
+
+kip:BiayaPendidikan_UKT-1K a kip:BiayaPendidikan ;
+    rdfs:label "Akreditasi Unggul/A/Internasional (kedokteran)" ;
+    kip:kedokteran true ;
+    kip:kode "UKT-1K" ;
+    kip:maks 12000000 ;
+    kip:nama "Akreditasi Unggul/A/Internasional (kedokteran)" ;
+    kip:tingkat 1 .
+
+kip:Dokumen_DOK-PANTI a kip:Dokumen ;
+    rdfs:label "Surat keterangan dari panti sosial / panti asuhan" ;
+    kip:keterangan "Bukti prioritas 7" ;
+    kip:kode "DOK-PANTI" ;
+    kip:nama "Surat keterangan dari panti sosial / panti asuhan" .
+
+kip:Dokumen_DOK-PENGHASILAN a kip:Dokumen ;
+    rdfs:label "Slip gaji atau surat keterangan penghasilan orang tua/wali, dan kartu keluarga" ;
+    kip:keterangan "Bukti prioritas 8 (penghasilan)" ;
+    kip:kode "DOK-PENGHASILAN" ;
+    kip:nama "Slip gaji atau surat keterangan penghasilan orang tua/wali, dan kartu keluarga" .
+
+kip:KategoriEkonomi_P7 a kip:KategoriEkonomi ;
+    rdfs:label "Berasal dari panti sosial / panti asuhan" ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-PANTI ;
+    kip:kode "P7" ;
+    kip:nama "Berasal dari panti sosial / panti asuhan" ;
+    kip:prioritas 7 .
+
+kip:ProgramProfesi_PRO-DOKTER a kip:ProgramProfesi ;
+    rdfs:label "Profesi Dokter" ;
+    kip:kode "PRO-DOKTER" ;
+    kip:maks_semester 4 ;
+    kip:nama "Profesi Dokter" ;
+    kip:rumpun "Kedokteran" .
+
+kip:Rule_B-03 a kip:Rule ;
+    rdfs:label "Gugur: data tahun tidak valid" ;
+    kip:MENYIMPULKAN kip:AlasanGugur_B-03 ;
+    kip:id "B-03" ;
+    kip:jika "Selisih_Tahun < 0" ;
+    kip:lapis "B" ;
+    kip:lapis_nama "Validasi administrasi" ;
+    kip:maka "Tambah Alasan_Gugur" ;
+    kip:nama "Gugur: data tahun tidak valid" ;
+    kip:strata 2 ;
+    kip:urut 11 .
+
+kip:Rule_B-05 a kip:Rule ;
+    rdfs:label "Gugur: prodi belum terakreditasi" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:AlasanGugur_B-05 ;
+    kip:id "B-05" ;
+    kip:jika "Prodi_Terakreditasi = False" ;
+    kip:lapis "B" ;
+    kip:lapis_nama "Validasi administrasi" ;
+    kip:maka "Tambah Alasan_Gugur" ;
+    kip:nama "Gugur: prodi belum terakreditasi" ;
+    kip:strata 2 ;
+    kip:urut 13 .
+
+kip:Rule_G-04 a kip:Rule ;
+    rdfs:label "Biaya pendidikan maks Rp 2.400.000" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:BiayaPendidikan_UKT-3 ;
+    kip:id "G-04" ;
+    kip:jika "Layak DAN Tingkat_3" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Beasiswa_Kuliah = maks Rp 2.400.000 / semester" ;
+    kip:nama "Biaya pendidikan maks Rp 2.400.000" ;
+    kip:strata 5 ;
+    kip:urut 45 .
+
+kip:Rule_G-16 a kip:Rule ;
+    rdfs:label "Lanjut Profesi Dokter Gigi" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:ProgramProfesi_PRO-DRG ;
+    kip:id "G-16" ;
+    kip:jika "Layak DAN jenjang Sarjana DAN rumpun prodi = Kedokteran Gigi" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Dapat dilanjutkan ke Profesi Dokter Gigi, maks 4 semester" ;
+    kip:nama "Lanjut Profesi Dokter Gigi" ;
+    kip:strata 5 ;
+    kip:urut 57 .
+
+kip:Rule_G-17 a kip:Rule ;
+    rdfs:label "Lanjut Profesi Dokter Hewan" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:ProgramProfesi_PRO-DRH ;
+    kip:id "G-17" ;
+    kip:jika "Layak DAN jenjang Sarjana DAN rumpun prodi = Kedokteran Hewan" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Dapat dilanjutkan ke Profesi Dokter Hewan, maks 4 semester" ;
+    kip:nama "Lanjut Profesi Dokter Hewan" ;
+    kip:strata 5 ;
+    kip:urut 58 .
+
+kip:Rule_G-18 a kip:Rule ;
+    rdfs:label "Lanjut Profesi Ners" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:ProgramProfesi_PRO-NERS ;
+    kip:id "G-18" ;
+    kip:jika "Layak DAN jenjang Sarjana DAN rumpun prodi = Keperawatan" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Dapat dilanjutkan ke Profesi Ners, maks 2 semester" ;
+    kip:nama "Lanjut Profesi Ners" ;
+    kip:strata 5 ;
+    kip:urut 59 .
+
+kip:Rule_G-19 a kip:Rule ;
+    rdfs:label "Lanjut Profesi Apoteker" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:ProgramProfesi_PRO-APT ;
+    kip:id "G-19" ;
+    kip:jika "Layak DAN jenjang Sarjana DAN rumpun prodi = Farmasi" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Dapat dilanjutkan ke Profesi Apoteker, maks 2 semester" ;
+    kip:nama "Lanjut Profesi Apoteker" ;
+    kip:strata 5 ;
+    kip:urut 60 .
+
+kip:Rule_G-20 a kip:Rule ;
+    rdfs:label "Lanjut Profesi Bidan" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:ProgramProfesi_PRO-BIDAN ;
+    kip:id "G-20" ;
+    kip:jika "Layak DAN jenjang Sarjana DAN rumpun prodi = Kebidanan" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Dapat dilanjutkan ke Profesi Bidan, maks 2 semester" ;
+    kip:nama "Lanjut Profesi Bidan" ;
+    kip:strata 5 ;
+    kip:urut 61 .
+
+kip:Rule_G-21 a kip:Rule ;
+    rdfs:label "Lanjut Pendidikan Profesi Guru" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:ProgramProfesi_PRO-PPG ;
+    kip:id "G-21" ;
+    kip:jika "Layak DAN jenjang Sarjana DAN rumpun prodi = Kependidikan" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Dapat dilanjutkan ke Pendidikan Profesi Guru, maks 2 semester" ;
+    kip:nama "Lanjut Pendidikan Profesi Guru" ;
+    kip:strata 5 ;
+    kip:urut 62 .
+
+kip:ZonaBiayaHidup_D a kip:ZonaBiayaHidup ;
+    kip:per_bulan 1250000 ;
+    kip:zona "D" .
+
+kip:ZonaBiayaHidup_E a kip:ZonaBiayaHidup ;
+    kip:per_bulan 1400000 ;
+    kip:zona "E" .
+
+kip:AlasanGugur_B-02 a kip:AlasanGugur ;
+    rdfs:label "Lulus lebih dari 2 tahun sebelum tahun pendaftaran" ;
+    kip:kode "B-02" ;
+    kip:teks "Lulus lebih dari 2 tahun sebelum tahun pendaftaran" .
+
+kip:BiayaPendidikan_UKT-2 a kip:BiayaPendidikan ;
+    rdfs:label "Akreditasi Baik Sekali/B" ;
+    kip:kedokteran false ;
+    kip:kode "UKT-2" ;
+    kip:maks 4000000 ;
+    kip:nama "Akreditasi Baik Sekali/B" ;
+    kip:tingkat 2 .
+
+kip:Dokumen_DOK-SKTM a kip:Dokumen ;
+    rdfs:label "SKTM desa/kelurahan, rekening listrik, dan foto rumah" ;
+    kip:keterangan "Bukti prioritas 8 (SKTM)" ;
+    kip:kode "DOK-SKTM" ;
+    kip:nama "SKTM desa/kelurahan, rekening listrik, dan foto rumah" .
+
+kip:KategoriEkonomi_P3 a kip:KategoriEkonomi ;
+    rdfs:label "Pemegang KIP SMA di PTS" ;
+    kip:BERLAKU_DI kip:PTS ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-KIP ;
+    kip:kode "P3" ;
+    kip:nama "Pemegang KIP SMA di PTS" ;
+    kip:prioritas 3 .
+
+kip:KategoriEkonomi_P4 a kip:KategoriEkonomi ;
+    rdfs:label "Terdata DTKS / penerima bansos di PTS" ;
+    kip:BERLAKU_DI kip:PTS ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-BANSOS ;
+    kip:kode "P4" ;
+    kip:nama "Terdata DTKS / penerima bansos di PTS" ;
+    kip:prioritas 4 .
+
+kip:KategoriEkonomi_P5 a kip:KategoriEkonomi ;
+    rdfs:label "Miskin/rentan miskin P3KE desil 1–3 di PTN" ;
+    kip:BERLAKU_DI kip:PTN ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-P3KE ;
+    kip:kode "P5" ;
+    kip:nama "Miskin/rentan miskin P3KE desil 1–3 di PTN" ;
+    kip:prioritas 5 .
+
+kip:Rule_B-04 a kip:Rule ;
+    rdfs:label "Gugur: tidak lulus seleksi PT" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:AlasanGugur_B-04 ;
+    kip:id "B-04" ;
+    kip:jika "Status seleksi PT = Tidak lulus" ;
+    kip:lapis "B" ;
+    kip:lapis_nama "Validasi administrasi" ;
+    kip:maka "Tambah Alasan_Gugur" ;
+    kip:nama "Gugur: tidak lulus seleksi PT" ;
+    kip:strata 2 ;
+    kip:urut 12 .
+
+kip:Rule_B-06 a kip:Rule ;
+    rdfs:label "Gugur: bukan kelas reguler" ;
+    kip:BERDASARKAN kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:AlasanGugur_B-06 ;
+    kip:id "B-06" ;
+    kip:jika "Jenis kelas ∈ {Eksekutif, Khusus, Karyawan}" ;
+    kip:lapis "B" ;
+    kip:lapis_nama "Validasi administrasi" ;
+    kip:maka "Tambah Alasan_Gugur" ;
+    kip:nama "Gugur: bukan kelas reguler" ;
+    kip:strata 2 ;
+    kip:urut 14 .
+
+kip:Rule_B-07 a kip:Rule ;
+    rdfs:label "Gugur: menerima beasiswa lain" ;
+    kip:BERDASARKAN kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:AlasanGugur_B-07 ;
+    kip:id "B-07" ;
+    kip:jika "Sedang menerima beasiswa APBN/APBD/sumber lain" ;
+    kip:lapis "B" ;
+    kip:lapis_nama "Validasi administrasi" ;
+    kip:maka "Tambah Alasan_Gugur" ;
+    kip:nama "Gugur: menerima beasiswa lain" ;
+    kip:strata 2 ;
+    kip:urut 15 .
+
+kip:Rule_C-03 a kip:Rule ;
+    rdfs:label "Prioritas 3: KIP SMA di PTS" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:KategoriEkonomi_P3 ;
+    kip:id "C-03" ;
+    kip:jika "Memiliki KIP SMA DAN kampus PTS" ;
+    kip:lapis "C" ;
+    kip:lapis_nama "Prioritas ekonomi" ;
+    kip:maka "Memenuhi_Prioritas += 3" ;
+    kip:nama "Prioritas 3: KIP SMA di PTS" ;
+    kip:strata 2 ;
+    kip:urut 20 .
+
+kip:Rule_C-04 a kip:Rule ;
+    rdfs:label "Prioritas 4: DTKS/bansos di PTS" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:KategoriEkonomi_P4 ;
+    kip:id "C-04" ;
+    kip:jika "Penerima_Bansos DAN kampus PTS" ;
+    kip:lapis "C" ;
+    kip:lapis_nama "Prioritas ekonomi" ;
+    kip:maka "Memenuhi_Prioritas += 4" ;
+    kip:nama "Prioritas 4: DTKS/bansos di PTS" ;
+    kip:strata 2 ;
+    kip:urut 21 .
+
+kip:Rule_C-05 a kip:Rule ;
+    rdfs:label "Prioritas 5: P3KE desil ≤ 3 di PTN" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:KategoriEkonomi_P5 ;
+    kip:id "C-05" ;
+    kip:jika "Rentan_Miskin_P3KE DAN kampus PTN" ;
+    kip:lapis "C" ;
+    kip:lapis_nama "Prioritas ekonomi" ;
+    kip:maka "Memenuhi_Prioritas += 5" ;
+    kip:nama "Prioritas 5: P3KE desil ≤ 3 di PTN" ;
+    kip:strata 2 ;
+    kip:urut 22 .
+
+kip:Rule_C-07 a kip:Rule ;
+    rdfs:label "Prioritas 7: Panti sosial/asuhan" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:KategoriEkonomi_P7 ;
+    kip:id "C-07" ;
+    kip:jika "Berasal dari panti sosial/asuhan (PTN atau PTS)" ;
+    kip:lapis "C" ;
+    kip:lapis_nama "Prioritas ekonomi" ;
+    kip:maka "Memenuhi_Prioritas += 7" ;
+    kip:nama "Prioritas 7: Panti sosial/asuhan" ;
+    kip:strata 2 ;
+    kip:urut 24 .
+
+kip:Rule_E-03 a kip:Rule ;
+    rdfs:label "Layak: jalur kondisi khusus" ;
+    kip:BERDASARKAN kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:Keputusan_LAYAK ;
+    kip:id "E-03" ;
+    kip:jika "Administrasi memenuhi DAN tidak memenuhi syarat ekonomi DAN ada kondisi khusus" ;
+    kip:lapis "E" ;
+    kip:lapis_nama "Keputusan akhir" ;
+    kip:maka "Keputusan_Akhir = Layak (pertimbangan khusus)" ;
+    kip:nama "Layak: jalur kondisi khusus" ;
+    kip:strata 4 ;
+    kip:urut 32 .
+
+kip:Rule_F-02 a kip:Rule ;
+    rdfs:label "Dokumen prioritas 2/4" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:Dokumen_DOK-BANSOS ;
+    kip:id "F-02" ;
+    kip:jika "Layak DAN Prioritas ∈ {2, 4}" ;
+    kip:lapis "F" ;
+    kip:lapis_nama "Dokumen wajib" ;
+    kip:maka "Wajib_Dokumen += DOK-BANSOS" ;
+    kip:nama "Dokumen prioritas 2/4" ;
+    kip:strata 5 ;
+    kip:urut 36 .
+
+kip:Rule_F-03 a kip:Rule ;
+    rdfs:label "Dokumen prioritas 5/6" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:Dokumen_DOK-P3KE ;
+    kip:id "F-03" ;
+    kip:jika "Layak DAN Prioritas ∈ {5, 6}" ;
+    kip:lapis "F" ;
+    kip:lapis_nama "Dokumen wajib" ;
+    kip:maka "Wajib_Dokumen += DOK-P3KE" ;
+    kip:nama "Dokumen prioritas 5/6" ;
+    kip:strata 5 ;
+    kip:urut 37 .
+
+kip:Rule_F-06 a kip:Rule ;
+    rdfs:label "Dokumen prioritas 8 (SKTM)" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:Dokumen_DOK-SKTM ;
+    kip:id "F-06" ;
+    kip:jika "Layak DAN Prioritas = 8 DAN Miskin_SKTM" ;
+    kip:lapis "F" ;
+    kip:lapis_nama "Dokumen wajib" ;
+    kip:maka "Wajib_Dokumen += DOK-SKTM" ;
+    kip:nama "Dokumen prioritas 8 (SKTM)" ;
+    kip:strata 5 ;
+    kip:urut 40 .
+
+kip:Rule_F-09 a kip:Rule ;
+    rdfs:label "Dokumen kondisi khusus" ;
+    kip:BERDASARKAN kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:Dokumen_DOK-KHUSUS ;
+    kip:id "F-09" ;
+    kip:jika "Layak DAN Status_Kondisi_Khusus = Ya" ;
+    kip:lapis "F" ;
+    kip:lapis_nama "Dokumen wajib" ;
+    kip:maka "Wajib_Dokumen += DOK-KHUSUS" ;
+    kip:nama "Dokumen kondisi khusus" ;
+    kip:strata 5 ;
+    kip:urut 41 .
+
+kip:Rule_G-08 a kip:Rule ;
+    rdfs:label "Biaya hidup zona D" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:ZonaBiayaHidup_D ;
+    kip:id "G-08" ;
+    kip:jika "Layak DAN zona kampus = D" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Beasiswa_Biaya_Hidup = Rp 1.250.000 / bulan (Rp 7.500.000 / semester)" ;
+    kip:nama "Biaya hidup zona D" ;
+    kip:strata 5 ;
+    kip:urut 49 .
+
+kip:Rule_G-09 a kip:Rule ;
+    rdfs:label "Biaya hidup zona E" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:ZonaBiayaHidup_E ;
+    kip:id "G-09" ;
+    kip:jika "Layak DAN zona kampus = E" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Beasiswa_Biaya_Hidup = Rp 1.400.000 / bulan (Rp 8.400.000 / semester)" ;
+    kip:nama "Biaya hidup zona E" ;
+    kip:strata 5 ;
+    kip:urut 50 .
+
+kip:BiayaPendidikan_UKT-1 a kip:BiayaPendidikan ;
+    rdfs:label "Akreditasi Unggul/A/Internasional (non-kedokteran)" ;
+    kip:kedokteran false ;
+    kip:kode "UKT-1" ;
+    kip:maks 8000000 ;
+    kip:nama "Akreditasi Unggul/A/Internasional (non-kedokteran)" ;
+    kip:tingkat 1 .
+
+kip:Dokumen_DOK-BANSOS a kip:Dokumen ;
+    rdfs:label "Bukti terdata DTKS, kartu KKS, atau bukti kepesertaan PKH" ;
+    kip:keterangan "Bukti prioritas 2 atau 4" ;
+    kip:kode "DOK-BANSOS" ;
+    kip:nama "Bukti terdata DTKS, kartu KKS, atau bukti kepesertaan PKH" .
+
+kip:Dokumen_DOK-P3KE a kip:Dokumen ;
+    rdfs:label "Bukti terdata P3KE desil 1–3" ;
+    kip:keterangan "Bukti prioritas 5 atau 6" ;
+    kip:kode "DOK-P3KE" ;
+    kip:nama "Bukti terdata P3KE desil 1–3" .
+
+kip:Rule_A-07 a kip:Rule ;
+    rdfs:label "Rentan miskin P3KE" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:id "A-07" ;
+    kip:jika "Terdata P3KE DAN desil ≤ 3" ;
+    kip:lapis "A" ;
+    kip:lapis_nama "Fakta pembantu" ;
+    kip:maka "Rentan_Miskin_P3KE = True" ;
+    kip:nama "Rentan miskin P3KE" ;
+    kip:strata 1 ;
+    kip:urut 6 .
+
+kip:Rule_C-10 a kip:Rule ;
+    rdfs:label "Tidak memenuhi syarat ekonomi" ;
+    kip:id "C-10" ;
+    kip:jika "Tidak ada prioritas yang cocok" ;
+    kip:lapis "C" ;
+    kip:lapis_nama "Prioritas ekonomi" ;
+    kip:maka "Kategori_Ekonomi = Tidak_Memenuhi_Syarat_Ekonomi" ;
+    kip:nama "Tidak memenuhi syarat ekonomi" ;
+    kip:strata 3 ;
+    kip:urut 27 .
+
+kip:Rule_D-01 a kip:Rule ;
+    rdfs:label "Ada kondisi khusus" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:id "D-01" ;
+    kip:jika "3T ATAU asli Papua ATAU anak TKI perbatasan ATAU bencana ATAU konflik ATAU korban kekerasan ATAU korban HAM" ;
+    kip:lapis "D" ;
+    kip:lapis_nama "Kondisi khusus" ;
+    kip:maka "Status_Kondisi_Khusus = Ya" ;
+    kip:nama "Ada kondisi khusus" ;
+    kip:strata 2 ;
+    kip:urut 28 .
+
+kip:Rule_G-02 a kip:Rule ;
+    rdfs:label "Biaya pendidikan maks Rp 12.000.000" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:BiayaPendidikan_UKT-1K ;
+    kip:id "G-02" ;
+    kip:jika "Layak DAN Tingkat_1 DAN prodi Kedokteran" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Beasiswa_Kuliah = maks Rp 12.000.000 / semester" ;
+    kip:nama "Biaya pendidikan maks Rp 12.000.000" ;
+    kip:strata 5 ;
+    kip:urut 43 .
+
+kip:Rule_G-15 a kip:Rule ;
+    rdfs:label "Lanjut Profesi Dokter" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:ProgramProfesi_PRO-DOKTER ;
+    kip:id "G-15" ;
+    kip:jika "Layak DAN jenjang Sarjana DAN rumpun prodi = Kedokteran" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Dapat dilanjutkan ke Profesi Dokter, maks 4 semester" ;
+    kip:nama "Lanjut Profesi Dokter" ;
+    kip:strata 5 ;
+    kip:urut 56 .
+
+kip:Dokumen_DOK-KIP a kip:Dokumen ;
+    rdfs:label "Kartu KIP Pendidikan Menengah (KIP SMA)" ;
+    kip:keterangan "Bukti prioritas 1 atau 3" ;
+    kip:kode "DOK-KIP" ;
+    kip:nama "Kartu KIP Pendidikan Menengah (KIP SMA)" .
+
+kip:KategoriEkonomi_P2 a kip:KategoriEkonomi ;
+    rdfs:label "Terdata DTKS / penerima bansos di PTN" ;
+    kip:BERLAKU_DI kip:PTN ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-BANSOS ;
+    kip:kode "P2" ;
+    kip:nama "Terdata DTKS / penerima bansos di PTN" ;
+    kip:prioritas 2 .
+
+kip:Rule_A-09 a kip:Rule ;
+    rdfs:label "Miskin berdasarkan SKTM" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:id "A-09" ;
+    kip:jika "Memiliki SKTM DAN bukti dukung (rekening listrik + foto rumah)" ;
+    kip:lapis "A" ;
+    kip:lapis_nama "Fakta pembantu" ;
+    kip:maka "Miskin_SKTM = True" ;
+    kip:nama "Miskin berdasarkan SKTM" ;
+    kip:strata 1 ;
+    kip:urut 8 .
+
+kip:Rule_B-02 a kip:Rule ;
+    rdfs:label "Gugur: melebihi batas tahun lulus" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:AlasanGugur_B-02 ;
+    kip:id "B-02" ;
+    kip:jika "Selisih_Tahun > 2" ;
+    kip:lapis "B" ;
+    kip:lapis_nama "Validasi administrasi" ;
+    kip:maka "Tambah Alasan_Gugur" ;
+    kip:nama "Gugur: melebihi batas tahun lulus" ;
+    kip:strata 2 ;
+    kip:urut 10 .
+
+kip:Rule_C-02 a kip:Rule ;
+    rdfs:label "Prioritas 2: DTKS/bansos di PTN" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:KategoriEkonomi_P2 ;
+    kip:id "C-02" ;
+    kip:jika "Penerima_Bansos DAN kampus PTN" ;
+    kip:lapis "C" ;
+    kip:lapis_nama "Prioritas ekonomi" ;
+    kip:maka "Memenuhi_Prioritas += 2" ;
+    kip:nama "Prioritas 2: DTKS/bansos di PTN" ;
+    kip:strata 2 ;
+    kip:urut 19 .
+
+kip:Rule_F-01 a kip:Rule ;
+    rdfs:label "Dokumen prioritas 1/3" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:Dokumen_DOK-KIP ;
+    kip:id "F-01" ;
+    kip:jika "Layak DAN Prioritas ∈ {1, 3}" ;
+    kip:lapis "F" ;
+    kip:lapis_nama "Dokumen wajib" ;
+    kip:maka "Wajib_Dokumen += DOK-KIP" ;
+    kip:nama "Dokumen prioritas 1/3" ;
+    kip:strata 5 ;
+    kip:urut 35 .
+
+kip:ZonaBiayaHidup_C a kip:ZonaBiayaHidup ;
+    kip:per_bulan 1100000 ;
+    kip:zona "C" .
+
+kip:Rule_G-03 a kip:Rule ;
+    rdfs:label "Biaya pendidikan maks Rp 4.000.000" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:BiayaPendidikan_UKT-2 ;
+    kip:id "G-03" ;
+    kip:jika "Layak DAN Tingkat_2" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Beasiswa_Kuliah = maks Rp 4.000.000 / semester" ;
+    kip:nama "Biaya pendidikan maks Rp 4.000.000" ;
+    kip:strata 5 ;
+    kip:urut 44 .
+
+kip:Dokumen_DOK-AKUN a kip:Dokumen ;
+    rdfs:label "NIK, NISN, dan NPSN yang valid di Dapodik, serta email aktif" ;
+    kip:keterangan "Untuk membuat akun di laman KIP Kuliah" ;
+    kip:kode "DOK-AKUN" ;
+    kip:nama "NIK, NISN, dan NPSN yang valid di Dapodik, serta email aktif" .
+
+kip:Jenjang_Sarjana a kip:Jenjang ;
+    rdfs:label "Sarjana (S1)" ;
+    kip:kode "Sarjana" ;
+    kip:maks_semester 8 ;
+    kip:nama "Sarjana (S1)" .
+
+kip:Rule_A-03 a kip:Rule ;
+    rdfs:label "Peringkat akreditasi tingkat 2" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:id "A-03" ;
+    kip:jika "Akreditasi prodi ∈ {Baik Sekali / B}" ;
+    kip:lapis "A" ;
+    kip:lapis_nama "Fakta pembantu" ;
+    kip:maka "Prodi terakreditasi, peringkat tingkat 2" ;
+    kip:nama "Peringkat akreditasi tingkat 2" ;
+    kip:strata 1 ;
+    kip:urut 2 .
+
+kip:Rule_A-06 a kip:Rule ;
+    rdfs:label "Penerima bansos Kemensos" ;
+    kip:BERDASARKAN kip:Sumber_PS ;
+    kip:id "A-06" ;
+    kip:jika "Terdata DTKS ATAU penerima PKH ATAU pemegang KKS" ;
+    kip:lapis "A" ;
+    kip:lapis_nama "Fakta pembantu" ;
+    kip:maka "Penerima_Bansos = True" ;
+    kip:nama "Penerima bansos Kemensos" ;
+    kip:strata 1 ;
+    kip:urut 5 .
+
+kip:pendaftar_Arif_Hidayat a kip:Pendaftar,
+        kip:PendaftarTidakLayak ;
+    rdfs:label "Arif Hidayat" ;
+    kip:DIPUTUSKAN kip:Keputusan_TIDAK_LAYAK ;
+    kip:GUGUR_KARENA kip:AlasanGugur_B-03 ;
+    kip:KULIAH_DI kip:PTN ;
+    kip:MEMICU kip:Rule_A-01,
+        kip:Rule_A-02,
+        kip:Rule_B-03,
+        kip:Rule_B-09,
+        kip:Rule_C-10,
+        kip:Rule_D-02,
+        kip:Rule_E-01 ;
+    kip:akreditasi_prodi "A" ;
+    kip:anak_tki false ;
+    kip:anggota_keluarga 4 ;
+    kip:asal_3t false ;
+    kip:asli_papua false ;
+    kip:beasiswa_lain false ;
+    kip:bencana false ;
+    kip:bukti_sktm false ;
+    kip:dibuat "2026-11-23T08:08:42.638625+00:00"^^xsd:dateTime ;
+    kip:dtks false ;
+    kip:id "9b369b4f5fbb" ;
+    kip:jalur "Gugur administrasi" ;
+    kip:jenis_kampus "PTN" ;
+    kip:jenis_kelas "Reguler" ;
+    kip:jenjang "Sarjana" ;
+    kip:kategori_ekonomi "Tidak_Memenuhi" ;
+    kip:keputusan "Tidak_Layak" ;
+    kip:kip_sma false ;
+    kip:kks false ;
+    kip:kondisi_khusus false ;
+    kip:konflik false ;
+    kip:korban_ham false ;
+    kip:korban_kekerasan false ;
+    kip:nama "Arif Hidayat" ;
+    kip:nama_kampus "" ;
+    kip:nama_prodi "Informatika" ;
+    kip:panti false ;
+    kip:penghasilan 9000000 ;
+    kip:pkh false ;
+    kip:prodi_terakreditasi true ;
+    kip:rumpun_prodi "Lainnya" ;
+    kip:selisih_tahun -1 ;
+    kip:sktm false ;
+    kip:status_administrasi "Tidak_Memenuhi_Syarat" ;
+    kip:status_seleksi "Lulus" ;
+    kip:tahun_daftar 2026 ;
+    kip:tahun_lulus 2027 ;
+    kip:terdata_p3ke false ;
+    kip:tingkat_akreditasi 1 ;
+    kip:zona "C" .
+
+kip:KategoriEkonomi_P8 a kip:KategoriEkonomi ;
+    rdfs:label "Miskin/rentan miskin dengan bukti penghasilan atau SKTM" ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-PENGHASILAN,
+        kip:Dokumen_DOK-SKTM ;
+    kip:kode "P8" ;
+    kip:nama "Miskin/rentan miskin dengan bukti penghasilan atau SKTM" ;
+    kip:prioritas 8 .
+
+kip:Keputusan_LAYAK a kip:Keputusan ;
+    rdfs:label "Layak menerima KIP Kuliah" ;
+    kip:kode "LAYAK" ;
+    kip:nama "Layak menerima KIP Kuliah" .
+
+kip:Keputusan_TIDAK_LAYAK a kip:Keputusan ;
+    rdfs:label "Belum memenuhi syarat KIP Kuliah" ;
+    kip:kode "TIDAK_LAYAK" ;
+    kip:nama "Belum memenuhi syarat KIP Kuliah" .
+
+kip:Rule_G-01 a kip:Rule ;
+    rdfs:label "Biaya pendidikan maks Rp 8.000.000" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:BiayaPendidikan_UKT-1 ;
+    kip:id "G-01" ;
+    kip:jika "Layak DAN Tingkat_1 DAN prodi bukan Kedokteran" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Beasiswa_Kuliah = maks Rp 8.000.000 / semester" ;
+    kip:nama "Biaya pendidikan maks Rp 8.000.000" ;
+    kip:strata 5 ;
+    kip:urut 42 .
+
+kip:pendaftar_Putri_Maharani a kip:Pendaftar,
+        kip:PendaftarTidakLayak ;
+    rdfs:label "Putri Maharani" ;
+    kip:BERKATEGORI kip:KategoriEkonomi_P1 ;
+    kip:COCOK_PRIORITAS kip:KategoriEkonomi_P1 ;
+    kip:DIPUTUSKAN kip:Keputusan_TIDAK_LAYAK ;
+    kip:GUGUR_KARENA kip:AlasanGugur_B-02 ;
+    kip:KULIAH_DI kip:PTN ;
+    kip:MEMICU kip:Rule_A-01,
+        kip:Rule_A-02,
+        kip:Rule_B-02,
+        kip:Rule_B-09,
+        kip:Rule_C-01,
+        kip:Rule_C-09,
+        kip:Rule_D-02,
+        kip:Rule_E-01 ;
+    kip:akreditasi_prodi "A" ;
+    kip:anak_tki false ;
+    kip:anggota_keluarga 4 ;
+    kip:asal_3t false ;
+    kip:asli_papua false ;
+    kip:beasiswa_lain false ;
+    kip:bencana false ;
+    kip:bukti_sktm false ;
+    kip:dibuat "2026-11-23T12:04:20.919059+00:00"^^xsd:dateTime ;
+    kip:dtks false ;
+    kip:id "454ee6007d7e" ;
+    kip:jalur "Gugur administrasi" ;
+    kip:jenis_kampus "PTN" ;
+    kip:jenis_kelas "Reguler" ;
+    kip:jenjang "Sarjana" ;
+    kip:kategori_ekonomi "P1" ;
+    kip:kategori_nama "Pemegang KIP SMA di PTN" ;
+    kip:keputusan "Tidak_Layak" ;
+    kip:kip_sma true ;
+    kip:kks false ;
+    kip:kondisi_khusus false ;
+    kip:konflik false ;
+    kip:korban_ham false ;
+    kip:korban_kekerasan false ;
+    kip:nama "Putri Maharani" ;
+    kip:nama_kampus "" ;
+    kip:nama_prodi "Informatika" ;
+    kip:panti false ;
+    kip:penghasilan 9000000 ;
+    kip:pkh false ;
+    kip:prioritas 1 ;
+    kip:prodi_terakreditasi true ;
+    kip:rumpun_prodi "Lainnya" ;
+    kip:selisih_tahun 4 ;
+    kip:sktm false ;
+    kip:status_administrasi "Tidak_Memenuhi_Syarat" ;
+    kip:status_seleksi "Lulus" ;
+    kip:tahun_daftar 2026 ;
+    kip:tahun_lulus 2022 ;
+    kip:terdata_p3ke false ;
+    kip:tingkat_akreditasi 1 ;
+    kip:zona "C" .
+
+kip:Dokumen_DOK-KHUSUS a kip:Dokumen ;
+    rdfs:label "Surat keterangan pemerintah daerah/instansi berwenang sesuai kondisi khusus" ;
+    kip:keterangan "3T, orang asli Papua, anak TKI, bencana, konflik, atau korban kekerasan/HAM" ;
+    kip:kode "DOK-KHUSUS" ;
+    kip:nama "Surat keterangan pemerintah daerah/instansi berwenang sesuai kondisi khusus" .
+
+kip:KategoriEkonomi_P1 a kip:KategoriEkonomi ;
+    rdfs:label "Pemegang KIP SMA di PTN" ;
+    kip:BERLAKU_DI kip:PTN ;
+    kip:MEMBUTUHKAN kip:Dokumen_DOK-KIP ;
+    kip:kode "P1" ;
+    kip:nama "Pemegang KIP SMA di PTN" ;
+    kip:prioritas 1 .
+
+kip:Rule_C-01 a kip:Rule ;
+    rdfs:label "Prioritas 1: KIP SMA di PTN" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:KategoriEkonomi_P1 ;
+    kip:id "C-01" ;
+    kip:jika "Memiliki KIP SMA DAN kampus PTN" ;
+    kip:lapis "C" ;
+    kip:lapis_nama "Prioritas ekonomi" ;
+    kip:maka "Memenuhi_Prioritas += 1" ;
+    kip:nama "Prioritas 1: KIP SMA di PTN" ;
+    kip:strata 2 ;
+    kip:urut 18 .
+
+kip:Rule_G-07 a kip:Rule ;
+    rdfs:label "Biaya hidup zona C" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:ZonaBiayaHidup_C ;
+    kip:id "G-07" ;
+    kip:jika "Layak DAN zona kampus = C" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Beasiswa_Biaya_Hidup = Rp 1.100.000 / bulan (Rp 6.600.000 / semester)" ;
+    kip:nama "Biaya hidup zona C" ;
+    kip:strata 5 ;
+    kip:urut 48 .
+
+kip:pendaftar_Salsabila_Putri a kip:Pendaftar,
+        kip:PendaftarTidakLayak ;
+    rdfs:label "Salsabila Putri" ;
+    kip:BERKATEGORI kip:KategoriEkonomi_P1 ;
+    kip:COCOK_PRIORITAS kip:KategoriEkonomi_P1 ;
+    kip:DIPUTUSKAN kip:Keputusan_TIDAK_LAYAK ;
+    kip:GUGUR_KARENA kip:AlasanGugur_B-07 ;
+    kip:KULIAH_DI kip:PTN ;
+    kip:MEMICU kip:Rule_A-01,
+        kip:Rule_A-02,
+        kip:Rule_B-01,
+        kip:Rule_B-07,
+        kip:Rule_B-09,
+        kip:Rule_C-01,
+        kip:Rule_C-09,
+        kip:Rule_D-02,
+        kip:Rule_E-01 ;
+    kip:akreditasi_prodi "A" ;
+    kip:anak_tki false ;
+    kip:anggota_keluarga 4 ;
+    kip:asal_3t false ;
+    kip:asli_papua false ;
+    kip:beasiswa_lain true ;
+    kip:bencana false ;
+    kip:bukti_sktm false ;
+    kip:dibuat "2026-11-23T12:04:26.432054+00:00"^^xsd:dateTime ;
+    kip:dtks false ;
+    kip:id "7aac65a24fc8" ;
+    kip:jalur "Gugur administrasi" ;
+    kip:jenis_kampus "PTN" ;
+    kip:jenis_kelas "Reguler" ;
+    kip:jenjang "Sarjana" ;
+    kip:kategori_ekonomi "P1" ;
+    kip:kategori_nama "Pemegang KIP SMA di PTN" ;
+    kip:keputusan "Tidak_Layak" ;
+    kip:kip_sma true ;
+    kip:kks false ;
+    kip:kondisi_khusus false ;
+    kip:konflik false ;
+    kip:korban_ham false ;
+    kip:korban_kekerasan false ;
+    kip:nama "Salsabila Putri" ;
+    kip:nama_kampus "" ;
+    kip:nama_prodi "Informatika" ;
+    kip:panti false ;
+    kip:penghasilan 9000000 ;
+    kip:pkh false ;
+    kip:prioritas 1 ;
+    kip:prodi_terakreditasi true ;
+    kip:rumpun_prodi "Lainnya" ;
+    kip:selisih_tahun 1 ;
+    kip:sktm false ;
+    kip:status_administrasi "Tidak_Memenuhi_Syarat" ;
+    kip:status_seleksi "Lulus" ;
+    kip:syarat_tahun_ok true ;
+    kip:tahun_daftar 2026 ;
+    kip:tahun_lulus 2025 ;
+    kip:terdata_p3ke false ;
+    kip:tingkat_akreditasi 1 ;
+    kip:zona "C" .
+
+kip:pendaftar_Dimas_Prakoso a kip:Pendaftar,
+        kip:PendaftarTidakLayak ;
+    rdfs:label "Dimas Prakoso" ;
+    kip:BERKATEGORI kip:KategoriEkonomi_P2 ;
+    kip:COCOK_PRIORITAS kip:KategoriEkonomi_P2 ;
+    kip:DIPUTUSKAN kip:Keputusan_TIDAK_LAYAK ;
+    kip:GUGUR_KARENA kip:AlasanGugur_B-06 ;
+    kip:KULIAH_DI kip:PTN ;
+    kip:MEMICU kip:Rule_A-01,
+        kip:Rule_A-02,
+        kip:Rule_A-06,
+        kip:Rule_B-01,
+        kip:Rule_B-06,
+        kip:Rule_B-09,
+        kip:Rule_C-02,
+        kip:Rule_C-09,
+        kip:Rule_D-02,
+        kip:Rule_E-01 ;
+    kip:akreditasi_prodi "A" ;
+    kip:anak_tki false ;
+    kip:anggota_keluarga 4 ;
+    kip:asal_3t false ;
+    kip:asli_papua false ;
+    kip:beasiswa_lain false ;
+    kip:bencana false ;
+    kip:bukti_sktm false ;
+    kip:dibuat "2026-11-23T21:25:12.394448+00:00"^^xsd:dateTime ;
+    kip:dtks false ;
+    kip:id "d389f89ebc77" ;
+    kip:jalur "Gugur administrasi" ;
+    kip:jenis_kampus "PTN" ;
+    kip:jenis_kelas "Karyawan" ;
+    kip:jenjang "Sarjana" ;
+    kip:kategori_ekonomi "P2" ;
+    kip:kategori_nama "Terdata DTKS / penerima bansos di PTN" ;
+    kip:keputusan "Tidak_Layak" ;
+    kip:kip_sma false ;
+    kip:kks true ;
+    kip:kondisi_khusus false ;
+    kip:konflik false ;
+    kip:korban_ham false ;
+    kip:korban_kekerasan false ;
+    kip:nama "Dimas Prakoso" ;
+    kip:nama_kampus "" ;
+    kip:nama_prodi "Informatika" ;
+    kip:panti false ;
+    kip:penerima_bansos true ;
+    kip:penghasilan 9000000 ;
+    kip:pkh false ;
+    kip:prioritas 2 ;
+    kip:prodi_terakreditasi true ;
+    kip:rumpun_prodi "Lainnya" ;
+    kip:selisih_tahun 1 ;
+    kip:sktm false ;
+    kip:status_administrasi "Tidak_Memenuhi_Syarat" ;
+    kip:status_seleksi "Lulus" ;
+    kip:syarat_tahun_ok true ;
+    kip:tahun_daftar 2026 ;
+    kip:tahun_lulus 2025 ;
+    kip:terdata_p3ke false ;
+    kip:tingkat_akreditasi 1 ;
+    kip:zona "C" .
+
+kip:pendaftar_Rina a kip:Pendaftar,
+        kip:PendaftarTidakLayak ;
+    rdfs:label "Rina" ;
+    kip:BERKATEGORI kip:KategoriEkonomi_P1 ;
+    kip:COCOK_PRIORITAS kip:KategoriEkonomi_P1,
+        kip:KategoriEkonomi_P8 ;
+    kip:DIPUTUSKAN kip:Keputusan_TIDAK_LAYAK ;
+    kip:GUGUR_KARENA kip:AlasanGugur_B-02 ;
+    kip:KULIAH_DI kip:PTN ;
+    kip:MEMICU kip:Rule_A-01,
+        kip:Rule_A-02,
+        kip:Rule_A-08,
+        kip:Rule_B-02,
+        kip:Rule_B-09,
+        kip:Rule_C-01,
+        kip:Rule_C-08,
+        kip:Rule_C-09,
+        kip:Rule_D-02,
+        kip:Rule_E-01 ;
+    kip:akreditasi_prodi "Unggul" ;
+    kip:anak_tki false ;
+    kip:anggota_keluarga 4 ;
+    kip:asal_3t false ;
+    kip:asli_papua false ;
+    kip:beasiswa_lain false ;
+    kip:bencana false ;
+    kip:bukti_sktm false ;
+    kip:dibuat "2026-11-25T07:18:08.075621+00:00"^^xsd:dateTime ;
+    kip:dtks false ;
+    kip:id "c7c52af886a4" ;
+    kip:jalur "Gugur administrasi" ;
+    kip:jenis_kampus "PTN" ;
+    kip:jenis_kelas "Reguler" ;
+    kip:jenjang "Sarjana" ;
+    kip:kategori_ekonomi "P1" ;
+    kip:kategori_nama "Pemegang KIP SMA di PTN" ;
+    kip:keputusan "Tidak_Layak" ;
+    kip:kip_sma true ;
+    kip:kks false ;
+    kip:kondisi_khusus false ;
+    kip:konflik false ;
+    kip:korban_ham false ;
+    kip:korban_kekerasan false ;
+    kip:miskin_penghasilan true ;
+    kip:nama "Rina" ;
+    kip:nama_kampus "UGM" ;
+    kip:nama_prodi "Informatika" ;
+    kip:panti false ;
+    kip:penghasilan 2500000 ;
+    kip:pkh false ;
+    kip:prioritas 1 ;
+    kip:prodi_terakreditasi true ;
+    kip:rumpun_prodi "Lainnya" ;
+    kip:selisih_tahun 3 ;
+    kip:sktm false ;
+    kip:status_administrasi "Tidak_Memenuhi_Syarat" ;
+    kip:status_seleksi "Lulus" ;
+    kip:tahun_daftar 2026 ;
+    kip:tahun_lulus 2023 ;
+    kip:terdata_p3ke false ;
+    kip:tingkat_akreditasi 1 ;
+    kip:zona "C" .
+
+kip:Rule_E-02 a kip:Rule ;
+    rdfs:label "Layak: jalur ekonomi" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:Keputusan_LAYAK ;
+    kip:id "E-02" ;
+    kip:jika "Administrasi memenuhi DAN kategori ekonomi Prioritas 1–8" ;
+    kip:lapis "E" ;
+    kip:lapis_nama "Keputusan akhir" ;
+    kip:maka "Keputusan_Akhir = Layak (jalur ekonomi)" ;
+    kip:nama "Layak: jalur ekonomi" ;
+    kip:strata 4 ;
+    kip:urut 31 .
+
+kip:Rule_A-08 a kip:Rule ;
+    rdfs:label "Miskin berdasarkan penghasilan" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:id "A-08" ;
+    kip:jika "Penghasilan gabungan ≤ Rp 4.000.000 ATAU penghasilan / anggota keluarga ≤ Rp 750.000" ;
+    kip:lapis "A" ;
+    kip:lapis_nama "Fakta pembantu" ;
+    kip:maka "Miskin_Penghasilan = True" ;
+    kip:nama "Miskin berdasarkan penghasilan" ;
+    kip:strata 1 ;
+    kip:urut 7 .
+
+kip:Rule_B-09 a kip:Rule ;
+    rdfs:label "Administrasi tidak memenuhi syarat" ;
+    kip:id "B-09" ;
+    kip:jika "Ada minimal satu Alasan_Gugur" ;
+    kip:lapis "B" ;
+    kip:lapis_nama "Validasi administrasi" ;
+    kip:maka "Status_Administrasi = Tidak_Memenuhi_Syarat" ;
+    kip:nama "Administrasi tidak memenuhi syarat" ;
+    kip:strata 3 ;
+    kip:urut 17 .
+
+kip:Rule_E-01 a kip:Rule ;
+    rdfs:label "Tidak layak: gugur administrasi" ;
+    kip:MENYIMPULKAN kip:Keputusan_TIDAK_LAYAK ;
+    kip:id "E-01" ;
+    kip:jika "Status_Administrasi = Tidak_Memenuhi_Syarat" ;
+    kip:lapis "E" ;
+    kip:lapis_nama "Keputusan akhir" ;
+    kip:maka "Keputusan_Akhir = Tidak_Layak" ;
+    kip:nama "Tidak layak: gugur administrasi" ;
+    kip:strata 4 ;
+    kip:urut 30 .
+
+kip:pendaftar_Yohana_Wenda a kip:Pendaftar,
+        kip:PendaftarLayak ;
+    rdfs:label "Yohana Wenda" ;
+    kip:DIPUTUSKAN kip:Keputusan_LAYAK ;
+    kip:KULIAH_DI kip:PTN ;
+    kip:MEMICU kip:Rule_A-01,
+        kip:Rule_A-02,
+        kip:Rule_B-01,
+        kip:Rule_B-08,
+        kip:Rule_C-10,
+        kip:Rule_D-01,
+        kip:Rule_E-03,
+        kip:Rule_F-00,
+        kip:Rule_F-09,
+        kip:Rule_G-01,
+        kip:Rule_G-09,
+        kip:Rule_G-10 ;
+    kip:MEMILIKI_KONDISI kip:KondisiKhusus_K-PAPUA ;
+    kip:MENDAPAT kip:BiayaPendidikan_UKT-1,
+        kip:Jenjang_Sarjana,
+        kip:ZonaBiayaHidup_E ;
+    kip:WAJIB_MENYERAHKAN kip:Dokumen_DOK-AKUN,
+        kip:Dokumen_DOK-KHUSUS ;
+    kip:akreditasi_prodi "A" ;
+    kip:anak_tki false ;
+    kip:anggota_keluarga 4 ;
+    kip:asal_3t false ;
+    kip:asli_papua true ;
+    kip:beasiswa_lain false ;
+    kip:bencana false ;
+    kip:bukti_sktm false ;
+    kip:dibuat "2026-11-23T12:04:31.465313+00:00"^^xsd:dateTime ;
+    kip:dtks false ;
+    kip:id "02d282f4012e" ;
+    kip:jalur "Pertimbangan khusus" ;
+    kip:jenis_kampus "PTN" ;
+    kip:jenis_kelas "Reguler" ;
+    kip:jenjang "Sarjana" ;
+    kip:kategori_ekonomi "Tidak_Memenuhi" ;
+    kip:keputusan "Layak" ;
+    kip:kip_sma false ;
+    kip:kks false ;
+    kip:kondisi_khusus true ;
+    kip:konflik false ;
+    kip:korban_ham false ;
+    kip:korban_kekerasan false ;
+    kip:nama "Yohana Wenda" ;
+    kip:nama_kampus "Universitas Cenderawasih" ;
+    kip:nama_prodi "Informatika" ;
+    kip:panti false ;
+    kip:penghasilan 9000000 ;
+    kip:pkh false ;
+    kip:prodi_terakreditasi true ;
+    kip:rumpun_prodi "Lainnya" ;
+    kip:selisih_tahun 1 ;
+    kip:sktm false ;
+    kip:status_administrasi "Memenuhi_Syarat" ;
+    kip:status_seleksi "Lulus" ;
+    kip:syarat_tahun_ok true ;
+    kip:tahun_daftar 2026 ;
+    kip:tahun_lulus 2025 ;
+    kip:terdata_p3ke false ;
+    kip:tingkat_akreditasi 1 ;
+    kip:zona "E" .
+
+kip:Rule_C-08 a kip:Rule ;
+    rdfs:label "Prioritas 8: Miskin/rentan miskin terbukti" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:KategoriEkonomi_P8 ;
+    kip:id "C-08" ;
+    kip:jika "Miskin_Penghasilan ATAU Miskin_SKTM" ;
+    kip:lapis "C" ;
+    kip:lapis_nama "Prioritas ekonomi" ;
+    kip:maka "Memenuhi_Prioritas += 8" ;
+    kip:nama "Prioritas 8: Miskin/rentan miskin terbukti" ;
+    kip:strata 2 ;
+    kip:urut 25 .
+
+kip:Rule_G-10 a kip:Rule ;
+    rdfs:label "Masa beasiswa Sarjana" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:MENYIMPULKAN kip:Jenjang_Sarjana ;
+    kip:id "G-10" ;
+    kip:jika "Layak DAN jenjang = Sarjana" ;
+    kip:lapis "G" ;
+    kip:lapis_nama "Besaran & jangka waktu" ;
+    kip:maka "Masa_Beasiswa_Maks = 8 semester" ;
+    kip:nama "Masa beasiswa Sarjana" ;
+    kip:strata 5 ;
+    kip:urut 51 .
+
+kip:pendaftar_Bayu_Saputra a kip:Pendaftar,
+        kip:PendaftarLayak ;
+    rdfs:label "Bayu Saputra" ;
+    kip:BERKATEGORI kip:KategoriEkonomi_P3 ;
+    kip:COCOK_PRIORITAS kip:KategoriEkonomi_P3 ;
+    kip:DIPUTUSKAN kip:Keputusan_LAYAK ;
+    kip:KULIAH_DI kip:PTS ;
+    kip:MEMICU kip:Rule_A-01,
+        kip:Rule_A-03,
+        kip:Rule_B-01,
+        kip:Rule_B-08,
+        kip:Rule_C-03,
+        kip:Rule_C-09,
+        kip:Rule_D-02,
+        kip:Rule_E-02,
+        kip:Rule_F-00,
+        kip:Rule_F-01,
+        kip:Rule_G-03,
+        kip:Rule_G-07,
+        kip:Rule_G-10 ;
+    kip:MENDAPAT kip:BiayaPendidikan_UKT-2,
+        kip:Jenjang_Sarjana,
+        kip:ZonaBiayaHidup_C ;
+    kip:WAJIB_MENYERAHKAN kip:Dokumen_DOK-AKUN,
+        kip:Dokumen_DOK-KIP ;
+    kip:akreditasi_prodi "B" ;
+    kip:anak_tki false ;
+    kip:anggota_keluarga 4 ;
+    kip:asal_3t false ;
+    kip:asli_papua false ;
+    kip:beasiswa_lain false ;
+    kip:bencana false ;
+    kip:bukti_sktm false ;
+    kip:dibuat "2026-11-23T07:59:49.774944+00:00"^^xsd:dateTime ;
+    kip:dtks false ;
+    kip:id "b54aecfe4bcf" ;
+    kip:jalur "Ekonomi – Prioritas 3" ;
+    kip:jenis_kampus "PTS" ;
+    kip:jenis_kelas "Reguler" ;
+    kip:jenjang "Sarjana" ;
+    kip:kategori_ekonomi "P3" ;
+    kip:kategori_nama "Pemegang KIP SMA di PTS" ;
+    kip:keputusan "Layak" ;
+    kip:kip_sma true ;
+    kip:kks false ;
+    kip:kondisi_khusus false ;
+    kip:konflik false ;
+    kip:korban_ham false ;
+    kip:korban_kekerasan false ;
+    kip:nama "Bayu Saputra" ;
+    kip:nama_kampus "Universitas Ahmad Dahlan" ;
+    kip:nama_prodi "Informatika" ;
+    kip:panti false ;
+    kip:penghasilan 9000000 ;
+    kip:pkh false ;
+    kip:prioritas 3 ;
+    kip:prodi_terakreditasi true ;
+    kip:rumpun_prodi "Lainnya" ;
+    kip:selisih_tahun 1 ;
+    kip:sktm false ;
+    kip:status_administrasi "Memenuhi_Syarat" ;
+    kip:status_seleksi "Lulus" ;
+    kip:syarat_tahun_ok true ;
+    kip:tahun_daftar 2026 ;
+    kip:tahun_lulus 2025 ;
+    kip:terdata_p3ke false ;
+    kip:tingkat_akreditasi 2 ;
+    kip:zona "C" .
+
+kip:pendaftar_ridwan a kip:Pendaftar,
+        kip:PendaftarTidakLayak ;
+    rdfs:label "ridwan" ;
+    kip:BERKATEGORI kip:KategoriEkonomi_P4 ;
+    kip:COCOK_PRIORITAS kip:KategoriEkonomi_P4,
+        kip:KategoriEkonomi_P8 ;
+    kip:DIPUTUSKAN kip:Keputusan_TIDAK_LAYAK ;
+    kip:GUGUR_KARENA kip:AlasanGugur_B-04 ;
+    kip:KULIAH_DI kip:PTS ;
+    kip:MEMICU kip:Rule_A-01,
+        kip:Rule_A-03,
+        kip:Rule_A-06,
+        kip:Rule_A-08,
+        kip:Rule_A-09,
+        kip:Rule_B-01,
+        kip:Rule_B-04,
+        kip:Rule_B-09,
+        kip:Rule_C-04,
+        kip:Rule_C-08,
+        kip:Rule_C-09,
+        kip:Rule_D-02,
+        kip:Rule_E-01 ;
+    kip:akreditasi_prodi "Baik_Sekali" ;
+    kip:anak_tki false ;
+    kip:anggota_keluarga 6 ;
+    kip:asal_3t false ;
+    kip:asli_papua false ;
+    kip:beasiswa_lain false ;
+    kip:bencana false ;
+    kip:bukti_sktm true ;
+    kip:dibuat "2026-11-23T12:02:16.621327+00:00"^^xsd:dateTime ;
+    kip:dtks true ;
+    kip:id "97ff3b20cc64" ;
+    kip:jalur "Gugur administrasi" ;
+    kip:jenis_kampus "PTS" ;
+    kip:jenis_kelas "Reguler" ;
+    kip:jenjang "Sarjana" ;
+    kip:kategori_ekonomi "P4" ;
+    kip:kategori_nama "Terdata DTKS / penerima bansos di PTS" ;
+    kip:keputusan "Tidak_Layak" ;
+    kip:kip_sma false ;
+    kip:kks true ;
+    kip:kondisi_khusus false ;
+    kip:konflik false ;
+    kip:korban_ham false ;
+    kip:korban_kekerasan false ;
+    kip:miskin_penghasilan true ;
+    kip:miskin_sktm true ;
+    kip:nama "ridwan" ;
+    kip:nama_kampus "oke aja" ;
+    kip:nama_prodi "informatika" ;
+    kip:panti false ;
+    kip:penerima_bansos true ;
+    kip:penghasilan 700000 ;
+    kip:pkh false ;
+    kip:prioritas 4 ;
+    kip:prodi_terakreditasi true ;
+    kip:rumpun_prodi "Lainnya" ;
+    kip:selisih_tahun 1 ;
+    kip:sktm true ;
+    kip:status_administrasi "Tidak_Memenuhi_Syarat" ;
+    kip:status_seleksi "Tidak_Lulus" ;
+    kip:syarat_tahun_ok true ;
+    kip:tahun_daftar 2026 ;
+    kip:tahun_lulus 2025 ;
+    kip:terdata_p3ke false ;
+    kip:tingkat_akreditasi 2 ;
+    kip:zona "E" .
+
+kip:Rule_B-08 a kip:Rule ;
+    rdfs:label "Administrasi memenuhi syarat" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:id "B-08" ;
+    kip:jika "Tahun lulus terpenuhi DAN lulus seleksi DAN prodi terakreditasi DAN kelas reguler DAN tidak menerima beasiswa lain DAN tidak ada Alasan_Gugur" ;
+    kip:lapis "B" ;
+    kip:lapis_nama "Validasi administrasi" ;
+    kip:maka "Status_Administrasi = Memenuhi_Syarat" ;
+    kip:nama "Administrasi memenuhi syarat" ;
+    kip:strata 3 ;
+    kip:urut 16 .
+
+kip:Rule_F-00 a kip:Rule ;
+    rdfs:label "Data akun pendaftaran" ;
+    kip:BERDASARKAN kip:Sumber_PED,
+        kip:Sumber_PS ;
+    kip:MENYIMPULKAN kip:Dokumen_DOK-AKUN ;
+    kip:id "F-00" ;
+    kip:jika "Keputusan = Layak" ;
+    kip:lapis "F" ;
+    kip:lapis_nama "Dokumen wajib" ;
+    kip:maka "Wajib_Dokumen += DOK-AKUN" ;
+    kip:nama "Data akun pendaftaran" ;
+    kip:strata 5 ;
+    kip:urut 34 .
+
+kip:pendaftar_Nanda_Lestari a kip:Pendaftar,
+        kip:PendaftarLayak ;
+    rdfs:label "Nanda Lestari" ;
+    kip:BERKATEGORI kip:KategoriEkonomi_P8 ;
+    kip:COCOK_PRIORITAS kip:KategoriEkonomi_P8 ;
+    kip:DIPUTUSKAN kip:Keputusan_LAYAK ;
+    kip:KULIAH_DI kip:PTS ;
+    kip:MEMICU kip:Rule_A-01,
+        kip:Rule_A-03,
+        kip:Rule_A-09,
+        kip:Rule_B-01,
+        kip:Rule_B-08,
+        kip:Rule_C-08,
+        kip:Rule_C-09,
+        kip:Rule_D-02,
+        kip:Rule_E-02,
+        kip:Rule_F-00,
+        kip:Rule_F-06,
+        kip:Rule_G-03,
+        kip:Rule_G-07,
+        kip:Rule_G-10 ;
+    kip:MENDAPAT kip:BiayaPendidikan_UKT-2,
+        kip:Jenjang_Sarjana,
+        kip:ZonaBiayaHidup_C ;
+    kip:WAJIB_MENYERAHKAN kip:Dokumen_DOK-AKUN,
+        kip:Dokumen_DOK-SKTM ;
+    kip:akreditasi_prodi "Baik_Sekali" ;
+    kip:anak_tki false ;
+    kip:anggota_keluarga 5 ;
+    kip:asal_3t false ;
+    kip:asli_papua false ;
+    kip:beasiswa_lain false ;
+    kip:bencana false ;
+    kip:bukti_sktm true ;
+    kip:dibuat "2026-11-23T07:57:03.852250+00:00"^^xsd:dateTime ;
+    kip:dtks false ;
+    kip:id "bb650245914e" ;
+    kip:jalur "Ekonomi – Prioritas 8" ;
+    kip:jenis_kampus "PTS" ;
+    kip:jenis_kelas "Reguler" ;
+    kip:jenjang "Sarjana" ;
+    kip:kategori_ekonomi "P8" ;
+    kip:kategori_nama "Miskin/rentan miskin dengan bukti penghasilan atau SKTM" ;
+    kip:keputusan "Layak" ;
+    kip:kip_sma false ;
+    kip:kks false ;
+    kip:kondisi_khusus false ;
+    kip:konflik false ;
+    kip:korban_ham false ;
+    kip:korban_kekerasan false ;
+    kip:miskin_sktm true ;
+    kip:nama "Nanda Lestari" ;
+    kip:nama_kampus "" ;
+    kip:nama_prodi "Informatika" ;
+    kip:panti false ;
+    kip:penghasilan 5000000 ;
+    kip:pkh false ;
+    kip:prioritas 8 ;
+    kip:prodi_terakreditasi true ;
+    kip:rumpun_prodi "Lainnya" ;
+    kip:selisih_tahun 1 ;
+    kip:sktm true ;
+    kip:status_administrasi "Memenuhi_Syarat" ;
+    kip:status_seleksi "Lulus" ;
+    kip:syarat_tahun_ok true ;
+    kip:tahun_daftar 2026 ;
+    kip:tahun_lulus 2025 ;
+    kip:terdata_p3ke false ;
+    kip:tingkat_akreditasi 2 ;
+    kip:zona "C" .
+
+kip:pendaftar_Rina_Wulandari a kip:Pendaftar,
+        kip:PendaftarLayak ;
+    rdfs:label "Rina Wulandari" ;
+    kip:BERKATEGORI kip:KategoriEkonomi_P1 ;
+    kip:COCOK_PRIORITAS kip:KategoriEkonomi_P1,
+        kip:KategoriEkonomi_P8 ;
+    kip:DIPUTUSKAN kip:Keputusan_LAYAK ;
+    kip:KULIAH_DI kip:PTN ;
+    kip:MEMICU kip:Rule_A-01,
+        kip:Rule_A-02,
+        kip:Rule_A-08,
+        kip:Rule_B-01,
+        kip:Rule_B-08,
+        kip:Rule_C-01,
+        kip:Rule_C-08,
+        kip:Rule_C-09,
+        kip:Rule_D-02,
+        kip:Rule_E-02,
+        kip:Rule_F-00,
+        kip:Rule_F-01,
+        kip:Rule_G-01,
+        kip:Rule_G-07,
+        kip:Rule_G-10 ;
+    kip:MENDAPAT kip:BiayaPendidikan_UKT-1,
+        kip:Jenjang_Sarjana,
+        kip:ZonaBiayaHidup_C ;
+    kip:WAJIB_MENYERAHKAN kip:Dokumen_DOK-AKUN,
+        kip:Dokumen_DOK-KIP ;
+    kip:akreditasi_prodi "A" ;
+    kip:anak_tki false ;
+    kip:anggota_keluarga 4 ;
+    kip:asal_3t false ;
+    kip:asli_papua false ;
+    kip:beasiswa_lain false ;
+    kip:bencana false ;
+    kip:bukti_sktm false ;
+    kip:dibuat "2026-11-23T10:48:09.767677+00:00"^^xsd:dateTime ;
+    kip:dtks false ;
+    kip:id "fb1da0ed7a83" ;
+    kip:jalur "Ekonomi – Prioritas 1" ;
+    kip:jenis_kampus "PTN" ;
+    kip:jenis_kelas "Reguler" ;
+    kip:jenjang "Sarjana" ;
+    kip:kategori_ekonomi "P1" ;
+    kip:kategori_nama "Pemegang KIP SMA di PTN" ;
+    kip:keputusan "Layak" ;
+    kip:kip_sma true ;
+    kip:kks false ;
+    kip:kondisi_khusus false ;
+    kip:konflik false ;
+    kip:korban_ham false ;
+    kip:korban_kekerasan false ;
+    kip:miskin_penghasilan true ;
+    kip:nama "Rina Wulandari" ;
+    kip:nama_kampus "Universitas Gadjah Mada" ;
+    kip:nama_prodi "Informatika" ;
+    kip:panti false ;
+    kip:penghasilan 2500000 ;
+    kip:pkh false ;
+    kip:prioritas 1 ;
+    kip:prodi_terakreditasi true ;
+    kip:rumpun_prodi "Lainnya" ;
+    kip:selisih_tahun 1 ;
+    kip:sktm false ;
+    kip:status_administrasi "Memenuhi_Syarat" ;
+    kip:status_seleksi "Lulus" ;
+    kip:syarat_tahun_ok true ;
+    kip:tahun_daftar 2026 ;
+    kip:tahun_lulus 2025 ;
+    kip:terdata_p3ke false ;
+    kip:tingkat_akreditasi 1 ;
+    kip:zona "C" .
+
+kip:pendaftar_Fajar_Ramadhan a kip:Pendaftar,
+        kip:PendaftarLayak ;
+    rdfs:label "Fajar Ramadhan" ;
+    kip:BERKATEGORI kip:KategoriEkonomi_P5 ;
+    kip:COCOK_PRIORITAS kip:KategoriEkonomi_P5,
+        kip:KategoriEkonomi_P7,
+        kip:KategoriEkonomi_P8 ;
+    kip:DIPUTUSKAN kip:Keputusan_LAYAK ;
+    kip:KULIAH_DI kip:PTN ;
+    kip:MEMICU kip:Rule_A-01,
+        kip:Rule_A-02,
+        kip:Rule_A-07,
+        kip:Rule_A-08,
+        kip:Rule_B-01,
+        kip:Rule_B-08,
+        kip:Rule_C-05,
+        kip:Rule_C-07,
+        kip:Rule_C-08,
+        kip:Rule_C-09,
+        kip:Rule_D-02,
+        kip:Rule_E-02,
+        kip:Rule_F-00,
+        kip:Rule_F-03,
+        kip:Rule_G-01,
+        kip:Rule_G-07,
+        kip:Rule_G-10 ;
+    kip:MENDAPAT kip:BiayaPendidikan_UKT-1,
+        kip:Jenjang_Sarjana,
+        kip:ZonaBiayaHidup_C ;
+    kip:WAJIB_MENYERAHKAN kip:Dokumen_DOK-AKUN,
+        kip:Dokumen_DOK-P3KE ;
+    kip:akreditasi_prodi "A" ;
+    kip:anak_tki false ;
+    kip:anggota_keluarga 1 ;
+    kip:asal_3t false ;
+    kip:asli_papua false ;
+    kip:beasiswa_lain false ;
+    kip:bencana false ;
+    kip:bukti_sktm false ;
+    kip:desil_p3ke 2 ;
+    kip:dibuat "2026-11-23T12:00:05.328043+00:00"^^xsd:dateTime ;
+    kip:dtks false ;
+    kip:id "d95c04902439" ;
+    kip:jalur "Ekonomi – Prioritas 5" ;
+    kip:jenis_kampus "PTN" ;
+    kip:jenis_kelas "Reguler" ;
+    kip:jenjang "Sarjana" ;
+    kip:kategori_ekonomi "P5" ;
+    kip:kategori_nama "Miskin/rentan miskin P3KE desil 1–3 di PTN" ;
+    kip:keputusan "Layak" ;
+    kip:kip_sma false ;
+    kip:kks false ;
+    kip:kondisi_khusus false ;
+    kip:konflik false ;
+    kip:korban_ham false ;
+    kip:korban_kekerasan false ;
+    kip:miskin_penghasilan true ;
+    kip:nama "Fajar Ramadhan" ;
+    kip:nama_kampus "" ;
+    kip:nama_prodi "Informatika" ;
+    kip:panti true ;
+    kip:penghasilan 0 ;
+    kip:pkh false ;
+    kip:prioritas 5 ;
+    kip:prodi_terakreditasi true ;
+    kip:rentan_p3ke true ;
+    kip:rumpun_prodi "Lainnya" ;
+    kip:selisih_tahun 1 ;
+    kip:sktm false ;
+    kip:status_administrasi "Memenuhi_Syarat" ;
+    kip:status_seleksi "Lulus" ;
+    kip:syarat_tahun_ok true ;
+    kip:tahun_daftar 2026 ;
+    kip:tahun_lulus 2025 ;
+    kip:terdata_p3ke true ;
+    kip:tingkat_akreditasi 1 ;
+    kip:zona "C" .
+
+kip:pendaftar_Gilang_Permana a kip:Pendaftar,
+        kip:PendaftarLayak ;
+    rdfs:label "Gilang Permana" ;
+    kip:BERKATEGORI kip:KategoriEkonomi_P2 ;
+    kip:COCOK_PRIORITAS kip:KategoriEkonomi_P2,
+        kip:KategoriEkonomi_P8 ;
+    kip:DIPUTUSKAN kip:Keputusan_LAYAK ;
+    kip:KULIAH_DI kip:PTN ;
+    kip:MEMICU kip:Rule_A-01,
+        kip:Rule_A-02,
+        kip:Rule_A-06,
+        kip:Rule_A-08,
+        kip:Rule_B-01,
+        kip:Rule_B-08,
+        kip:Rule_C-02,
+        kip:Rule_C-08,
+        kip:Rule_C-09,
+        kip:Rule_D-02,
+        kip:Rule_E-02,
+        kip:Rule_F-00,
+        kip:Rule_F-02,
+        kip:Rule_G-02,
+        kip:Rule_G-08,
+        kip:Rule_G-10,
+        kip:Rule_G-15 ;
+    kip:MENDAPAT kip:BiayaPendidikan_UKT-1K,
+        kip:Jenjang_Sarjana,
+        kip:ProgramProfesi_PRO-DOKTER,
+        kip:ZonaBiayaHidup_D ;
+    kip:WAJIB_MENYERAHKAN kip:Dokumen_DOK-AKUN,
+        kip:Dokumen_DOK-BANSOS ;
+    kip:akreditasi_prodi "Unggul" ;
+    kip:anak_tki false ;
+    kip:anggota_keluarga 4 ;
+    kip:asal_3t false ;
+    kip:asli_papua false ;
+    kip:beasiswa_lain false ;
+    kip:bencana false ;
+    kip:bukti_sktm false ;
+    kip:dibuat "2026-11-23T21:24:58.681697+00:00"^^xsd:dateTime ;
+    kip:dtks true ;
+    kip:id "c302794a11c7" ;
+    kip:jalur "Ekonomi – Prioritas 2" ;
+    kip:jenis_kampus "PTN" ;
+    kip:jenis_kelas "Reguler" ;
+    kip:jenjang "Sarjana" ;
+    kip:kategori_ekonomi "P2" ;
+    kip:kategori_nama "Terdata DTKS / penerima bansos di PTN" ;
+    kip:keputusan "Layak" ;
+    kip:kip_sma false ;
+    kip:kks false ;
+    kip:kondisi_khusus false ;
+    kip:konflik false ;
+    kip:korban_ham false ;
+    kip:korban_kekerasan false ;
+    kip:miskin_penghasilan true ;
+    kip:nama "Gilang Permana" ;
+    kip:nama_kampus "Universitas Airlangga" ;
+    kip:nama_prodi "Pendidikan Dokter" ;
+    kip:panti false ;
+    kip:penerima_bansos true ;
+    kip:penghasilan 3200000 ;
+    kip:pkh false ;
+    kip:prioritas 2 ;
+    kip:prodi_terakreditasi true ;
+    kip:rumpun_prodi "Kedokteran" ;
+    kip:selisih_tahun 1 ;
+    kip:sktm false ;
+    kip:status_administrasi "Memenuhi_Syarat" ;
+    kip:status_seleksi "Lulus" ;
+    kip:syarat_tahun_ok true ;
+    kip:tahun_daftar 2026 ;
+    kip:tahun_lulus 2025 ;
+    kip:terdata_p3ke false ;
+    kip:tingkat_akreditasi 1 ;
+    kip:zona "D" .
+
+kip:Rule_A-02 a kip:Rule ;
+    rdfs:label "Peringkat akreditasi tingkat 1" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:id "A-02" ;
+    kip:jika "Akreditasi prodi ∈ {Unggul / A / Internasional}" ;
+    kip:lapis "A" ;
+    kip:lapis_nama "Fakta pembantu" ;
+    kip:maka "Prodi terakreditasi, peringkat tingkat 1" ;
+    kip:nama "Peringkat akreditasi tingkat 1" ;
+    kip:strata 1 ;
+    kip:urut 1 .
+
+kip:Rule_B-01 a kip:Rule ;
+    rdfs:label "Tahun lulus memenuhi" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:id "B-01" ;
+    kip:jika "0 ≤ Selisih_Tahun ≤ 2" ;
+    kip:lapis "B" ;
+    kip:lapis_nama "Validasi administrasi" ;
+    kip:maka "Syarat_Tahun_Lulus = Terpenuhi" ;
+    kip:nama "Tahun lulus memenuhi" ;
+    kip:strata 2 ;
+    kip:urut 9 .
+
+kip:Rule_C-09 a kip:Rule ;
+    rdfs:label "Tetapkan kategori ekonomi" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:id "C-09" ;
+    kip:jika "Ada minimal satu prioritas yang cocok" ;
+    kip:lapis "C" ;
+    kip:lapis_nama "Prioritas ekonomi" ;
+    kip:maka "Kategori_Ekonomi = Prioritas MIN(k)" ;
+    kip:nama "Tetapkan kategori ekonomi" ;
+    kip:strata 3 ;
+    kip:urut 26 .
+
+kip:Rule_D-02 a kip:Rule ;
+    rdfs:label "Tidak ada kondisi khusus" ;
+    kip:id "D-02" ;
+    kip:jika "Semua flag kondisi khusus bernilai False" ;
+    kip:lapis "D" ;
+    kip:lapis_nama "Kondisi khusus" ;
+    kip:maka "Status_Kondisi_Khusus = Tidak" ;
+    kip:nama "Tidak ada kondisi khusus" ;
+    kip:strata 3 ;
+    kip:urut 29 .
+
+kip:Rule_A-01 a kip:Rule ;
+    rdfs:label "Selisih tahun lulus" ;
+    kip:BERDASARKAN kip:Sumber_PED ;
+    kip:id "A-01" ;
+    kip:jika "Tahun daftar dan tahun lulus SMA diketahui" ;
+    kip:lapis "A" ;
+    kip:lapis_nama "Fakta pembantu" ;
+    kip:maka "Selisih_Tahun = Tahun_Daftar − Tahun_Lulus_SMA" ;
+    kip:nama "Selisih tahun lulus" ;
+    kip:strata 1 ;
+    kip:urut 0 .
+
+kip:Sumber_PS a kip:Sumber ;
+    rdfs:label "Persesjen Kemendikbudristek No. 13 Tahun 2023 tentang Juklak PIP Pendidikan Tinggi" ;
+    kip:judul "Persesjen Kemendikbudristek No. 13 Tahun 2023 tentang Juklak PIP Pendidikan Tinggi" ;
+    kip:kode "PS" ;
+    kip:penerbit "Kemendikbudristek" ;
+    kip:tahun 2023 .
+
+kip:Sumber_PED a kip:Sumber ;
+    rdfs:label "Pedoman Pendaftaran KIP Kuliah 2025 v1.0" ;
+    kip:judul "Pedoman Pendaftaran KIP Kuliah 2025 v1.0" ;
+    kip:kode "PED" ;
+    kip:penerbit "Kemdiktisaintek" ;
+    kip:tahun 2025 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 7 dan 14" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-09 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Layak melalui jalur pertimbangan khusus (afirmasi)" ;
+    kip:urutan 7 ;
+    rdf:object kip:Rule_E-03 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Yohana_Wenda .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 15" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-13 .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf C angka 1b(6)" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_A-08 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Biaya hidup zona C: Rp 1.100.000/bulan, dicairkan Rp 6.600.000 per semester" ;
+    kip:urutan 14 ;
+    rdf:object kip:Rule_G-07 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Beasiswa diberikan maksimal 8 semester (Sarjana)" ;
+    kip:urutan 16 ;
+    rdf:object kip:Rule_G-10 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 8: Miskin/rentan miskin dengan bukti penghasilan atau SKTM" ;
+    kip:urutan 6 ;
+    rdf:object kip:Rule_C-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Keluarga tercatat sebagai penerima bansos (DTKS, KKS)" ;
+    kip:urutan 3 ;
+    rdf:object kip:Rule_A-06 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_ridwan .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 11 butir 7" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_C-07 .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf C angka 1b (dan/atau pertimbangan khusus)" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_E-03 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Lulus 1 tahun sebelum pendaftaran (maks 2 tahun) → memenuhi" ;
+    kip:urutan 4 ;
+    rdf:object kip:Rule_B-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Selisih tahun daftar dan tahun lulus = 1 tahun" ;
+    kip:urutan 1 ;
+    rdf:object kip:Rule_A-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Wajib menyiapkan: Kartu KIP Pendidikan Menengah (KIP SMA)" ;
+    kip:urutan 12 ;
+    rdf:object kip:Rule_F-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Biaya hidup zona C: Rp 1.100.000/bulan, dicairkan Rp 6.600.000 per semester" ;
+    kip:urutan 13 ;
+    rdf:object kip:Rule_G-07 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 8" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-01 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Prodi terakreditasi (Baik Sekali / B) → peringkat tingkat 2" ;
+    kip:urutan 2 ;
+    rdf:object kip:Rule_A-03 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Penghasilan gabungan Rp 2500000/bulan, per kapita Rp 625000 → memenuhi batas miskin/rentan miskin" ;
+    kip:urutan 3 ;
+    rdf:object kip:Rule_A-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak memiliki kondisi khusus" ;
+    kip:urutan 9 ;
+    rdf:object kip:Rule_D-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Biaya pendidikan ditanggung maks Rp 4.000.000 per semester" ;
+    kip:urutan 12 ;
+    rdf:object kip:Rule_G-03 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf C angka 1c–1f" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_F-09 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 10 butir 2" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_C-02 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 7 dan 14" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-08 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 7 dan 14" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-05 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak memiliki kondisi khusus" ;
+    kip:urutan 7 ;
+    rdf:object kip:Rule_D-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Bayu_Saputra .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Biaya pendidikan ditanggung maks Rp 8.000.000 per semester" ;
+    kip:urutan 15 ;
+    rdf:object kip:Rule_G-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 9 butir 2" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_B-02 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Kategori ekonomi: Prioritas 1 (Pemegang KIP SMA di PTN)" ;
+    kip:urutan 8 ;
+    rdf:object kip:Rule_C-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak cocok dengan prioritas ekonomi mana pun" ;
+    kip:urutan 6 ;
+    rdf:object kip:Rule_C-10 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Yohana_Wenda .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Biaya pendidikan ditanggung maks Rp 12.000.000 per semester" ;
+    kip:urutan 14 ;
+    rdf:object kip:Rule_G-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Semua syarat administrasi terpenuhi" ;
+    kip:urutan 5 ;
+    rdf:object kip:Rule_B-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Yohana_Wenda .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Gugur administrasi karena 1 alasan" ;
+    kip:urutan 6 ;
+    rdf:object kip:Rule_B-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Salsabila_Putri .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Biaya pendidikan ditanggung maks Rp 4.000.000 per semester" ;
+    kip:urutan 11 ;
+    rdf:object kip:Rule_G-03 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Bayu_Saputra .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Kategori ekonomi: Prioritas 2 (Terdata DTKS / penerima bansos di PTN)" ;
+    kip:urutan 8 ;
+    rdf:object kip:Rule_C-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Dimas_Prakoso .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf D angka 3i" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_B-06 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 15" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-21 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Selisih tahun daftar dan tahun lulus = 1 tahun" ;
+    kip:urutan 1 ;
+    rdf:object kip:Rule_A-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Beasiswa diberikan maksimal 8 semester (Sarjana)" ;
+    kip:urutan 14 ;
+    rdf:object kip:Rule_G-10 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 5" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_D-01 .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf D angka 3e" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-16 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Semua syarat administrasi terpenuhi" ;
+    kip:urutan 7 ;
+    rdf:object kip:Rule_B-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Prodi terakreditasi (Unggul / A / Internasional) → peringkat tingkat 1" ;
+    kip:urutan 2 ;
+    rdf:object kip:Rule_A-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Kategori ekonomi: Prioritas 1 (Pemegang KIP SMA di PTN)" ;
+    kip:urutan 8 ;
+    rdf:object kip:Rule_C-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Setelah sarjana dapat dilanjutkan ke Profesi Dokter maks 4 semester (selama tetap penerima KIP Kuliah)" ;
+    kip:urutan 17 ;
+    rdf:object kip:Rule_G-15 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Wajib menyiapkan: Bukti terdata P3KE desil 1–3" ;
+    kip:urutan 14 ;
+    rdf:object kip:Rule_F-03 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 12 butir 8b" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_F-06 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Terdata P3KE pada desil 2 (batas desil 3)" ;
+    kip:urutan 3 ;
+    rdf:object kip:Rule_A-07 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 9 butir 3" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_E-02 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Layak melalui jalur ekonomi Prioritas 8" ;
+    kip:urutan 9 ;
+    rdf:object kip:Rule_E-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 11 butir 6" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_C-06 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak memiliki kondisi khusus" ;
+    kip:urutan 11 ;
+    rdf:object kip:Rule_D-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Wajib menyiapkan: NIK, NISN, dan NPSN yang valid di Dapodik, serta email aktif" ;
+    kip:urutan 9 ;
+    rdf:object kip:Rule_F-00 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Bayu_Saputra .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Kategori ekonomi: Prioritas 2 (Terdata DTKS / penerima bansos di PTN)" ;
+    kip:urutan 9 ;
+    rdf:object kip:Rule_C-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf D angka 3e" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-21 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 7: Berasal dari panti sosial / panti asuhan" ;
+    kip:urutan 7 ;
+    rdf:object kip:Rule_C-07 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 11" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_F-03 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak memiliki kondisi khusus" ;
+    kip:urutan 10 ;
+    rdf:object kip:Rule_D-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Memiliki SKTM desa/kelurahan beserta bukti dukung" ;
+    kip:urutan 3 ;
+    rdf:object kip:Rule_A-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Biaya hidup zona C: Rp 1.100.000/bulan, dicairkan Rp 6.600.000 per semester" ;
+    kip:urutan 12 ;
+    rdf:object kip:Rule_G-07 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Bayu_Saputra .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Prodi terakreditasi (Unggul / A / Internasional) → peringkat tingkat 1" ;
+    kip:urutan 2 ;
+    rdf:object kip:Rule_A-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Dimas_Prakoso .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 10" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_F-02 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 8" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-02 .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf D angka 3c" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_B-05 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 1: Pemegang KIP SMA di PTN" ;
+    kip:urutan 4 ;
+    rdf:object kip:Rule_C-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Putri_Maharani .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak layak karena gugur di tahap administrasi" ;
+    kip:urutan 9 ;
+    rdf:object kip:Rule_E-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Salsabila_Putri .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Kategori ekonomi: Prioritas 3 (Pemegang KIP SMA di PTS)" ;
+    kip:urutan 6 ;
+    rdf:object kip:Rule_C-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Bayu_Saputra .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf C angka 1c–1f" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_D-01 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Wajib menyiapkan: NIK, NISN, dan NPSN yang valid di Dapodik, serta email aktif" ;
+    kip:urutan 13 ;
+    rdf:object kip:Rule_F-00 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Selisih tahun daftar dan tahun lulus = 1 tahun" ;
+    kip:urutan 1 ;
+    rdf:object kip:Rule_A-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Wajib menyiapkan: Surat keterangan pemerintah daerah/instansi berwenang sesuai kondisi khusus" ;
+    kip:urutan 9 ;
+    rdf:object kip:Rule_F-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Yohana_Wenda .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 8" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_A-02 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Wajib menyiapkan: NIK, NISN, dan NPSN yang valid di Dapodik, serta email aktif" ;
+    kip:urutan 10 ;
+    rdf:object kip:Rule_F-00 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 15" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-16 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Keluarga tercatat sebagai penerima bansos (DTKS)" ;
+    kip:urutan 3 ;
+    rdf:object kip:Rule_A-06 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Prodi terakreditasi (Unggul / A / Internasional) → peringkat tingkat 1" ;
+    kip:urutan 2 ;
+    rdf:object kip:Rule_A-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Salsabila_Putri .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Memiliki SKTM desa/kelurahan beserta bukti dukung" ;
+    kip:urutan 5 ;
+    rdf:object kip:Rule_A-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_ridwan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Gugur: Tahun lulus setelah tahun pendaftaran (data tidak valid)" ;
+    kip:urutan 3 ;
+    rdf:object kip:Rule_B-03 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Arif_Hidayat .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Semua syarat administrasi terpenuhi" ;
+    kip:urutan 6 ;
+    rdf:object kip:Rule_B-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Prodi terakreditasi (Unggul / A / Internasional) → peringkat tingkat 1" ;
+    kip:urutan 2 ;
+    rdf:object kip:Rule_A-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Arif_Hidayat .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Lulus 1 tahun sebelum pendaftaran (maks 2 tahun) → memenuhi" ;
+    kip:urutan 5 ;
+    rdf:object kip:Rule_B-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak memiliki kondisi khusus" ;
+    kip:urutan 8 ;
+    rdf:object kip:Rule_D-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 8: Miskin/rentan miskin dengan bukti penghasilan atau SKTM" ;
+    kip:urutan 9 ;
+    rdf:object kip:Rule_C-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_ridwan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak memiliki kondisi khusus" ;
+    kip:urutan 12 ;
+    rdf:object kip:Rule_D-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_ridwan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Beasiswa diberikan maksimal 8 semester (Sarjana)" ;
+    kip:urutan 15 ;
+    rdf:object kip:Rule_G-10 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 8: Miskin/rentan miskin dengan bukti penghasilan atau SKTM" ;
+    kip:urutan 7 ;
+    rdf:object kip:Rule_C-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Prodi terakreditasi (Unggul / A / Internasional) → peringkat tingkat 1" ;
+    kip:urutan 2 ;
+    rdf:object kip:Rule_A-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Yohana_Wenda .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Selisih tahun daftar dan tahun lulus = 1 tahun" ;
+    kip:urutan 1 ;
+    rdf:object kip:Rule_A-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab III, Komponen Pembiayaan angka 1b" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-03 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 15" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-20 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Prodi terakreditasi (Baik Sekali / B) → peringkat tingkat 2" ;
+    kip:urutan 2 ;
+    rdf:object kip:Rule_A-03 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Bayu_Saputra .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Selisih tahun daftar dan tahun lulus = 1 tahun" ;
+    kip:urutan 1 ;
+    rdf:object kip:Rule_A-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Bayu_Saputra .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Beasiswa diberikan maksimal 8 semester (Sarjana)" ;
+    kip:urutan 13 ;
+    rdf:object kip:Rule_G-10 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Bayu_Saputra .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Lulus 1 tahun sebelum pendaftaran (maks 2 tahun) → memenuhi" ;
+    kip:urutan 3 ;
+    rdf:object kip:Rule_B-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Yohana_Wenda .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Semua syarat administrasi terpenuhi" ;
+    kip:urutan 5 ;
+    rdf:object kip:Rule_B-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Bayu_Saputra .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 9 butir 1" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_B-05 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Prodi terakreditasi (Unggul / A / Internasional) → peringkat tingkat 1" ;
+    kip:urutan 2 ;
+    rdf:object kip:Rule_A-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 10 butir 1" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_C-01 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Selisih tahun daftar dan tahun lulus = -1 tahun" ;
+    kip:urutan 1 ;
+    rdf:object kip:Rule_A-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Arif_Hidayat .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 11 butir 5–6" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_A-07 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 9 butir 2" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_A-01 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Penghasilan gabungan Rp 700000/bulan, per kapita Rp 116666 → memenuhi batas miskin/rentan miskin" ;
+    kip:urutan 4 ;
+    rdf:object kip:Rule_A-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_ridwan .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 12 butir 8b" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_A-09 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Selisih tahun daftar dan tahun lulus = 1 tahun" ;
+    kip:urutan 1 ;
+    rdf:object kip:Rule_A-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Dimas_Prakoso .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak layak karena gugur di tahap administrasi" ;
+    kip:urutan 13 ;
+    rdf:object kip:Rule_E-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_ridwan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Lulus 1 tahun sebelum pendaftaran (maks 2 tahun) → memenuhi" ;
+    kip:urutan 4 ;
+    rdf:object kip:Rule_B-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Layak melalui jalur ekonomi Prioritas 3" ;
+    kip:urutan 8 ;
+    rdf:object kip:Rule_E-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Bayu_Saputra .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Wajib menyiapkan: NIK, NISN, dan NPSN yang valid di Dapodik, serta email aktif" ;
+    kip:urutan 11 ;
+    rdf:object kip:Rule_F-00 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 9 butir 1" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_B-04 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Semua syarat administrasi terpenuhi" ;
+    kip:urutan 8 ;
+    rdf:object kip:Rule_B-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak cocok dengan prioritas ekonomi mana pun" ;
+    kip:urutan 5 ;
+    rdf:object kip:Rule_C-10 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Arif_Hidayat .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Lulus 1 tahun sebelum pendaftaran (maks 2 tahun) → memenuhi" ;
+    kip:urutan 6 ;
+    rdf:object kip:Rule_B-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_ridwan .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 7 dan 14" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-06 .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf C angka 1b(1)–(3)" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_A-06 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 2: Terdata DTKS / penerima bansos di PTN" ;
+    kip:urutan 6 ;
+    rdf:object kip:Rule_C-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Selisih tahun daftar dan tahun lulus = 1 tahun" ;
+    kip:urutan 1 ;
+    rdf:object kip:Rule_A-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_ridwan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Layak melalui jalur ekonomi Prioritas 2" ;
+    kip:urutan 11 ;
+    rdf:object kip:Rule_E-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 10 butir 4" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_C-04 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 12 butir 8" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_C-08 .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf D angka 3c" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_F-00 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Layak melalui jalur ekonomi Prioritas 5" ;
+    kip:urutan 12 ;
+    rdf:object kip:Rule_E-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 10" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_F-01 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 11" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_F-04 .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf D angka 3e" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-19 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 9" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_B-08 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak memiliki kondisi khusus" ;
+    kip:urutan 6 ;
+    rdf:object kip:Rule_D-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Arif_Hidayat .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 8" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-03 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Kategori ekonomi: Prioritas 4 (Terdata DTKS / penerima bansos di PTS)" ;
+    kip:urutan 11 ;
+    rdf:object kip:Rule_C-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_ridwan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak layak karena gugur di tahap administrasi" ;
+    kip:urutan 8 ;
+    rdf:object kip:Rule_E-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Putri_Maharani .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 15" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-14 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 10 butir 3" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_C-03 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 8" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_A-03 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 8" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_A-04 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak memiliki kondisi khusus" ;
+    kip:urutan 7 ;
+    rdf:object kip:Rule_D-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Putri_Maharani .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 9 butir 2" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_B-01 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Lulus 1 tahun sebelum pendaftaran (maks 2 tahun) → memenuhi" ;
+    kip:urutan 4 ;
+    rdf:object kip:Rule_B-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Dimas_Prakoso .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf D angka 3e" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-20 .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf D angka 3e" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-15 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Wajib menyiapkan: NIK, NISN, dan NPSN yang valid di Dapodik, serta email aktif" ;
+    kip:urutan 8 ;
+    rdf:object kip:Rule_F-00 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Yohana_Wenda .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab III, Komponen Pembiayaan angka 1b" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-04 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 10–12 (urutan prioritas)" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_C-09 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 15" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-10 .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf D angka 3e" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-17 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Biaya hidup zona E: Rp 1.400.000/bulan, dicairkan Rp 8.400.000 per semester" ;
+    kip:urutan 11 ;
+    rdf:object kip:Rule_G-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Yohana_Wenda .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Biaya pendidikan ditanggung maks Rp 8.000.000 per semester" ;
+    kip:urutan 10 ;
+    rdf:object kip:Rule_G-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Yohana_Wenda .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak memiliki kondisi khusus" ;
+    kip:urutan 8 ;
+    rdf:object kip:Rule_D-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Salsabila_Putri .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 18" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_F-00 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 2: Terdata DTKS / penerima bansos di PTN" ;
+    kip:urutan 6 ;
+    rdf:object kip:Rule_C-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Dimas_Prakoso .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Selisih tahun daftar dan tahun lulus = 3 tahun" ;
+    kip:urutan 1 ;
+    rdf:object kip:Rule_A-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Beasiswa diberikan maksimal 8 semester (Sarjana)" ;
+    kip:urutan 12 ;
+    rdf:object kip:Rule_G-10 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Yohana_Wenda .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 15" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-11 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Gugur administrasi karena 1 alasan" ;
+    kip:urutan 5 ;
+    rdf:object kip:Rule_B-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Putri_Maharani .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf D angka 3" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_B-08 .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab III, Komponen Pembiayaan angka 1b" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-02 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak memiliki kondisi khusus" ;
+    kip:urutan 9 ;
+    rdf:object kip:Rule_D-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Gugur: Lulus lebih dari 2 tahun sebelum tahun pendaftaran" ;
+    kip:urutan 3 ;
+    rdf:object kip:Rule_B-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Putri_Maharani .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 8: Miskin/rentan miskin dengan bukti penghasilan atau SKTM" ;
+    kip:urutan 6 ;
+    rdf:object kip:Rule_C-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Prodi terakreditasi (Unggul / A / Internasional) → peringkat tingkat 1" ;
+    kip:urutan 2 ;
+    rdf:object kip:Rule_A-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Putri_Maharani .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 11 butir 5" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_C-05 .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf D angka 3h" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_B-07 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak layak karena gugur di tahap administrasi" ;
+    kip:urutan 10 ;
+    rdf:object kip:Rule_E-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 8: Miskin/rentan miskin dengan bukti penghasilan atau SKTM" ;
+    kip:urutan 5 ;
+    rdf:object kip:Rule_C-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Biaya hidup zona D: Rp 1.250.000/bulan, dicairkan Rp 7.500.000 per semester" ;
+    kip:urutan 15 ;
+    rdf:object kip:Rule_G-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Semua syarat administrasi terpenuhi" ;
+    kip:urutan 9 ;
+    rdf:object kip:Rule_B-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab III, Komponen Pembiayaan angka 1b" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-01 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Kategori ekonomi: Prioritas 1 (Pemegang KIP SMA di PTN)" ;
+    kip:urutan 6 ;
+    rdf:object kip:Rule_C-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Putri_Maharani .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 5: Miskin/rentan miskin P3KE desil 1–3 di PTN" ;
+    kip:urutan 6 ;
+    rdf:object kip:Rule_C-05 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Prodi terakreditasi (Baik Sekali / B) → peringkat tingkat 2" ;
+    kip:urutan 2 ;
+    rdf:object kip:Rule_A-03 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_ridwan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak layak karena gugur di tahap administrasi" ;
+    kip:urutan 7 ;
+    rdf:object kip:Rule_E-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Arif_Hidayat .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak layak karena gugur di tahap administrasi" ;
+    kip:urutan 10 ;
+    rdf:object kip:Rule_E-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Dimas_Prakoso .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf D angka 3e" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-18 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 15" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-12 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 8" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-04 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Gugur: Sedang menerima beasiswa atau bantuan biaya pendidikan lain" ;
+    kip:urutan 4 ;
+    rdf:object kip:Rule_B-07 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Salsabila_Putri .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Penghasilan gabungan Rp 0/bulan, per kapita Rp 0 → memenuhi batas miskin/rentan miskin" ;
+    kip:urutan 4 ;
+    rdf:object kip:Rule_A-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Wajib menyiapkan: SKTM desa/kelurahan, rekening listrik, dan foto rumah" ;
+    kip:urutan 11 ;
+    rdf:object kip:Rule_F-06 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Gugur: Diterima di kelas eksekutif, khusus, atau karyawan" ;
+    kip:urutan 5 ;
+    rdf:object kip:Rule_B-06 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Dimas_Prakoso .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 1: Pemegang KIP SMA di PTN" ;
+    kip:urutan 5 ;
+    rdf:object kip:Rule_C-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Prodi terakreditasi (Unggul / A / Internasional) → peringkat tingkat 1" ;
+    kip:urutan 2 ;
+    rdf:object kip:Rule_A-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Biaya pendidikan ditanggung maks Rp 8.000.000 per semester" ;
+    kip:urutan 13 ;
+    rdf:object kip:Rule_G-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Tidak memiliki kondisi khusus" ;
+    kip:urutan 9 ;
+    rdf:object kip:Rule_D-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Dimas_Prakoso .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Wajib menyiapkan: NIK, NISN, dan NPSN yang valid di Dapodik, serta email aktif" ;
+    kip:urutan 12 ;
+    rdf:object kip:Rule_F-00 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Gugur administrasi karena 1 alasan" ;
+    kip:urutan 7 ;
+    rdf:object kip:Rule_B-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Kategori ekonomi: Prioritas 5 (Miskin/rentan miskin P3KE desil 1–3 di PTN)" ;
+    kip:urutan 10 ;
+    rdf:object kip:Rule_C-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 7 dan 14" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-07 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 1: Pemegang KIP SMA di PTN" ;
+    kip:urutan 5 ;
+    rdf:object kip:Rule_C-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Salsabila_Putri .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 4: Terdata DTKS / penerima bansos di PTS" ;
+    kip:urutan 8 ;
+    rdf:object kip:Rule_C-04 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_ridwan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Prodi terakreditasi (Unggul / A / Internasional) → peringkat tingkat 1" ;
+    kip:urutan 2 ;
+    rdf:object kip:Rule_A-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Kategori ekonomi: Prioritas 8 (Miskin/rentan miskin dengan bukti penghasilan atau SKTM)" ;
+    kip:urutan 7 ;
+    rdf:object kip:Rule_C-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Nanda_Lestari .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 15" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-18 .
+
+[] a rdf:Statement ;
+    kip:bagian "Bab I huruf C angka 1b(4)" ;
+    rdf:object kip:Sumber_PS ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_A-07 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Biaya hidup zona C: Rp 1.100.000/bulan, dicairkan Rp 6.600.000 per semester" ;
+    kip:urutan 16 ;
+    rdf:object kip:Rule_G-07 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Gugur administrasi karena 1 alasan" ;
+    kip:urutan 4 ;
+    rdf:object kip:Rule_B-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Arif_Hidayat .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 15" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-17 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 1: Pemegang KIP SMA di PTN" ;
+    kip:urutan 5 ;
+    rdf:object kip:Rule_C-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Kondisi khusus: Orang asli Papua" ;
+    kip:urutan 4 ;
+    rdf:object kip:Rule_D-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Yohana_Wenda .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 9 butir 1" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_A-05 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 12 butir 8a" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_A-08 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Lulus 1 tahun sebelum pendaftaran (maks 2 tahun) → memenuhi" ;
+    kip:urutan 3 ;
+    rdf:object kip:Rule_B-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Salsabila_Putri .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Penghasilan gabungan Rp 2500000/bulan, per kapita Rp 625000 → memenuhi batas miskin/rentan miskin" ;
+    kip:urutan 3 ;
+    rdf:object kip:Rule_A-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Beasiswa diberikan maksimal 8 semester (Sarjana)" ;
+    kip:urutan 17 ;
+    rdf:object kip:Rule_G-10 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Wajib menyiapkan: Kartu KIP Pendidikan Menengah (KIP SMA)" ;
+    kip:urutan 10 ;
+    rdf:object kip:Rule_F-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Bayu_Saputra .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Lulus 1 tahun sebelum pendaftaran (maks 2 tahun) → memenuhi" ;
+    kip:urutan 5 ;
+    rdf:object kip:Rule_B-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Gugur administrasi karena 1 alasan" ;
+    kip:urutan 7 ;
+    rdf:object kip:Rule_B-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Dimas_Prakoso .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Keluarga tercatat sebagai penerima bansos (KKS)" ;
+    kip:urutan 3 ;
+    rdf:object kip:Rule_A-06 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Dimas_Prakoso .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 8: Miskin/rentan miskin dengan bukti penghasilan atau SKTM" ;
+    kip:urutan 8 ;
+    rdf:object kip:Rule_C-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Fajar_Ramadhan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Layak melalui jalur ekonomi Prioritas 1" ;
+    kip:urutan 10 ;
+    rdf:object kip:Rule_E-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina_Wulandari .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Wajib menyiapkan: Bukti terdata DTKS, kartu KKS, atau bukti kepesertaan PKH" ;
+    kip:urutan 13 ;
+    rdf:object kip:Rule_F-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Gugur: Lulus lebih dari 2 tahun sebelum tahun pendaftaran" ;
+    kip:urutan 4 ;
+    rdf:object kip:Rule_B-02 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Rina .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Kategori ekonomi: Prioritas 1 (Pemegang KIP SMA di PTN)" ;
+    kip:urutan 7 ;
+    rdf:object kip:Rule_C-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Salsabila_Putri .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 15" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-15 .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 12 butir 8a" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_F-05 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Penghasilan gabungan Rp 3200000/bulan, per kapita Rp 800000 → memenuhi batas miskin/rentan miskin" ;
+    kip:urutan 4 ;
+    rdf:object kip:Rule_A-08 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Gilang_Permana .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Lulus 1 tahun sebelum pendaftaran (maks 2 tahun) → memenuhi" ;
+    kip:urutan 3 ;
+    rdf:object kip:Rule_B-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Bayu_Saputra .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Gugur administrasi karena 1 alasan" ;
+    kip:urutan 10 ;
+    rdf:object kip:Rule_B-09 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_ridwan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Selisih tahun daftar dan tahun lulus = 1 tahun" ;
+    kip:urutan 1 ;
+    rdf:object kip:Rule_A-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Yohana_Wenda .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Selisih tahun daftar dan tahun lulus = 4 tahun" ;
+    kip:urutan 1 ;
+    rdf:object kip:Rule_A-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Putri_Maharani .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Gugur: Belum/tidak lulus seleksi masuk perguruan tinggi" ;
+    kip:urutan 7 ;
+    rdf:object kip:Rule_B-04 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_ridwan .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Selisih tahun daftar dan tahun lulus = 1 tahun" ;
+    kip:urutan 1 ;
+    rdf:object kip:Rule_A-01 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Salsabila_Putri .
+
+[] a rdf:Statement ;
+    kip:bagian "hal. 15" ;
+    rdf:object kip:Sumber_PED ;
+    rdf:predicate kip:BERDASARKAN ;
+    rdf:subject kip:Rule_G-19 .
+
+[] a rdf:Statement ;
+    kip:kesimpulan "Cocok dengan prioritas 3: Pemegang KIP SMA di PTS" ;
+    kip:urutan 4 ;
+    rdf:object kip:Rule_C-03 ;
+    rdf:predicate kip:MEMICU ;
+    rdf:subject kip:pendaftar_Bayu_Saputra .
+

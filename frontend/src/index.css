@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-tinta: #1b2a6b;
+  --color-tinta-tua: #101a45;
+  --color-tinta-muda: #3a4a94;
+  --color-kertas: #f4f6fb;
+  --color-garis: #dce1ec;
+  --color-redup: #5b6480;
+  --color-stabilo: #ffe14d;
+  --color-stabilo-muda: #fff4b0;
+  --color-layak: #0e8a5e;
+  --color-layak-muda: #e3f4ec;
+  --color-gagal: #c23b3b;
+  --color-gagal-muda: #fbeaea;
+}
+
+html {
+  background: var(--color-kertas);
+  color: var(--color-tinta-tua);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "tnum" 0;
+  min-height: 100vh;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-stabilo);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Efek stabilo: dipakai untuk menandai isian AI & kesimpulan yang ditarik mesin aturan */
+.stabilo {
+  background-image: linear-gradient(
+    100deg,
+    transparent 0.3em,
+    var(--color-stabilo-muda) 0.3em,
+    var(--color-stabilo) 55%,
+    var(--color-stabilo-muda) calc(100% - 0.3em),
+    transparent calc(100% - 0.3em)
+  );
+  background-size: 100% 0.62em;
+  background-position: 0 88%;
+  background-repeat: no-repeat;
+  padding: 0 0.15em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.field-ai {
+  box-shadow: inset 0 -0.55em 0 var(--color-stabilo-muda);
+  border-color: #e9c92a !important;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Stempel di kartu hasil: satu-satunya animasi otomatis di aplikasi */
+@keyframes cap {
+  0% { transform: rotate(-14deg) scale(1.9); opacity: 0; }
+  60% { transform: rotate(-9deg) scale(0.94); opacity: 1; }
+  100% { transform: rotate(-10deg) scale(1); opacity: 1; }
+}
+.stempel {
+  animation: cap 520ms cubic-bezier(0.2, 0.9, 0.3, 1.2) 250ms both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .stempel { animation: none; transform: rotate(-10deg); }
+}
+
+.pola-kartu {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.09) 1px, transparent 0);
+  background-size: 14px 14px;
+}
+
+/* Wadah: lebar tetap 1344px (lebih lebar dari 1152px standar sebelumnya), jarak tepi bertingkat */
+@utility wadah {
+  width: 100%;
+  max-width: 84rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
+/* Beranda: a welcoming campus scene, with a quiet form alongside it. */
+.beranda { background: #f7f8fc; }
+.hero-invitation { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; color: #3a4a94; font-size: 14px; font-weight: 700; }
+.hero-invitation svg { color: #1b2a6b; }
+.cerita-panel { box-shadow: 0 6px 0 #e5e9f3, 0 15px 35px -25px #1b2a6b55; transition: border-color .2s; }
+.cerita-panel:focus-within { border-color: #3a4a94; }
+.cerita-label { display: block; padding: 10px 12px 0; font-size: 14px; font-weight: 800; }
+.student-scene { height: 325px; position: relative; isolation: isolate; }
+.student-backdrop { position: absolute; width: 305px; height: 290px; border-radius: 48% 48% 35% 40%; background: #ffe989; bottom: -10px; right: 40px; transform: rotate(-8deg); z-index: -1; }
+.student-character { position: absolute; height: 355px; width: 355px; object-fit: contain; right: 20px; bottom: -18px; }
+.student-message { position: absolute; left: 5px; top: 42px; z-index: 1; padding: 15px 20px; border: 1px solid #dce1ec; border-radius: 18px 18px 3px 18px; background: white; transform: rotate(-7deg); font-size: 15px; line-height: 1.65; box-shadow: 0 7px 0 #e9ecf4; }
+.student-message strong { font-weight: 800; }
+.scene-star { position: absolute; font-size: 47px; color: #ed876f; }
+.star-one { right: 8px; top: 26px; transform: rotate(12deg); }
+.star-two { left: 55px; bottom: 65px; color: #1b2a6b; font-size: 30px; }
+.student-note { position: absolute; display: flex; align-items: center; gap: 7px; right: 0; bottom: 30px; padding: 10px 14px; border-radius: 10px; background: #d8f1e6; color: #24644e; font-size: 11px; font-weight: 700; transform: rotate(5deg); }
+.preview-card { position: relative; z-index: 2; }
+.step-kuliah { padding: 22px; border-radius: 20px; border: 1px solid #e6e9f0; background: #f5f7fc; }
+.step-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; color: #3a4a94; }
+.step-heading span { font-weight: 800; font-size: 14px; }
+.step-kuliah-2 { background: #eef8f3; border-color: #dfeee5; }
+.step-kuliah-2 .step-heading { color: #287354; }
+.step-kuliah-3 { background: #fff3ed; border-color: #f5e4d9; }
+.step-kuliah-3 .step-heading { color: #a5583b; }
+.step-kuliah-4 { background: #fff9df; border-color: #f0e8c7; }
+.step-kuliah-4 .step-heading { color: #877027; }
+@media (min-width: 1024px) { .hero-visual { padding-left: 16px; } }
+@media (max-width: 639px) {
+  .hero-invitation { margin-bottom: 16px; font-size: 12px; }
+  .student-scene { height: 290px; }
+  .preview-card { margin-inline: 16px; }
+  .student-character { width: 310px; height: 310px; right: 0; }
+  .student-backdrop { width: 260px; height: 250px; right: 15px; }
+  .student-message { left: 0; top: 20px; font-size: 12px; padding: 12px; }
+  .student-note { font-size: 10px; right: 0; bottom: 18px; }
+  .star-two { left: 20px; }
+}
+
+/* Two students share one campus illustration. */
+.student-scene { height: 345px; }
+.student-backdrop { width: 360px; right: 25px; }
+.student-character-female { right: 0; width: 300px; height: 330px; }
+.student-character-male { right: 145px; width: 295px; height: 315px; bottom: -16px; }
+.student-message { top: 0; left: 0; font-size: 13px; padding: 10px 15px; }
+.student-note { z-index: 1; }
+.star-two { left: 25px; bottom: 100px; }
+@media (max-width: 639px) {
+ .student-scene { height: 325px; }
+ .student-backdrop { width: 290px; height: 245px; right: 16px; }
+ .student-character-female { width: 230px; height: 285px; right: 0; }
+ .student-character-male { width: 245px; height: 275px; right: 100px; }
+ .student-message { font-size: 11px; top: -5px; }
+ .star-two { left: 0; bottom: 110px; font-size: 23px; }
+}
+
+/* Consistent form rhythm: 8px within fields, 24px between groups. */
+.cerita-panel { padding: 24px; }
+.cerita-label { padding: 0; margin-bottom: 12px; line-height: 1.5; }
+.cerita-input { display: block; min-height: 136px; padding: 14px 16px; border: 1px solid var(--color-garis); background: #fafbfe; resize: vertical; }
+.cerita-input:focus-visible { outline: 2px solid var(--color-tinta-muda); outline-offset: 2px; border-radius: 12px; }
+.cerita-actions { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: 12px; margin-top: 20px; }
+.cerita-actions button { display: inline-flex; justify-content: center; align-items: center; min-height: 44px; padding: 10px 12px; line-height: 1.5; }
+.cerita-actions button:first-child { border: 1px solid var(--color-garis); border-radius: 12px; }
+.form-fields { display: grid; gap: 24px; }
+.form-field { display: grid; align-content: start; gap: 8px; min-width: 0; }
+.form-field > span:first-child { line-height: 1.5; }
+.form-field > span:last-child:not(:first-child) { line-height: 1.6; }
+.form-input { height: 48px; min-width: 0; }
+.field-row { display: grid; gap: 24px; }
+.form-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.form-options button { min-height: 48px; line-height: 1.5; }
+.form-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.form-steps button { width: 100%; height: 100%; min-height: 48px; text-align: left; }
+.form-steps button > span { flex-shrink: 0; }
+@media (min-width: 640px) {
+ .field-row { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; row-gap: 8px; }
+ .field-row > .form-field { grid-row: span 3; grid-template-rows: subgrid; }
+ .form-options { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+}
+@media (min-width: 1280px) { .form-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 639px) {
+ .cerita-panel { padding: 20px; }
+ .cerita-actions { grid-template-columns: 1fr; gap: 10px; margin-top: 16px; }
+ .check-page .form-panel { padding: 20px; }
+}

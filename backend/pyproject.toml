@@ -1,0 +1,13 @@
+[project]
+name = "kipk-expert-backend"
+version = "1.0.0"
+description = "Backend sistem pakar kelayakan KIP Kuliah (FastAPI + Neo4j + Gemini)"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "neo4j>=5.20",
+    "python-dotenv>=1.0",
+    "google-genai>=1.0",
+    "pydantic>=2.7",
+]

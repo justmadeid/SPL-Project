@@ -1,0 +1,257 @@
+# TBox ontologi KIP Kuliah (Pintu Kuliah) dalam Turtle.
+#
+# Berkas ini adalah padanan RDF/RDFS dari skema yang disimpan di Neo4j:
+#   - node :Kelas + relasi SUBKELAS_DARI   -> rdfs:Class + rdfs:subClassOf
+#   - tipe relasi (COCOK_PRIORITAS, ...)   -> rdf:Property dengan rdfs:domain / rdfs:range
+#   - properti node (p.penghasilan, ...)   -> properti data dengan range xsd
+#   - relasi INSTANCE_DARI / label Neo4j   -> rdf:type (ABox, tidak ditulis di sini)
+# Sumber kebenaran tetap backend/app/ontology.py dan backend/app/rules.py.
+
+@prefix kip:  <http://pintukuliah.local/ontologi#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# ---------------------------------------------------------------------------
+# Hierarki kelas (19 kelas, akar kip:Entitas)
+# ---------------------------------------------------------------------------
+
+kip:Entitas a rdfs:Class ;
+    rdfs:label "Entitas" ;
+    rdfs:comment "Akar hierarki ontologi KIP Kuliah" .
+
+kip:Pendaftar a rdfs:Class ;
+    rdfs:subClassOf kip:Entitas ;
+    rdfs:comment "Calon mahasiswa yang dinilai kelayakannya" .
+
+kip:PendaftarLayak a rdfs:Class ;
+    rdfs:subClassOf kip:Pendaftar ;
+    rdfs:comment "Pendaftar yang disimpulkan layak menerima KIP Kuliah" .
+
+kip:PendaftarTidakLayak a rdfs:Class ;
+    rdfs:subClassOf kip:Pendaftar ;
+    rdfs:comment "Pendaftar yang disimpulkan tidak layak" .
+
+kip:PerguruanTinggi a rdfs:Class ;
+    rdfs:subClassOf kip:Entitas ;
+    rdfs:comment "Perguruan tinggi tujuan" .
+
+kip:PTN a rdfs:Class ;
+    rdfs:subClassOf kip:PerguruanTinggi ;
+    rdfs:comment "Perguruan Tinggi Negeri" .
+
+kip:PTS a rdfs:Class ;
+    rdfs:subClassOf kip:PerguruanTinggi ;
+    rdfs:comment "Perguruan Tinggi Swasta" .
+
+kip:KategoriEkonomi a rdfs:Class ;
+    rdfs:subClassOf kip:Entitas ;
+    rdfs:comment "Urutan prioritas ekonomi penerima KIP Kuliah" .
+
+kip:KondisiKhusus a rdfs:Class ;
+    rdfs:subClassOf kip:Entitas ;
+    rdfs:comment "Kondisi afirmasi / pertimbangan khusus" .
+
+kip:AlasanGugur a rdfs:Class ;
+    rdfs:subClassOf kip:Entitas ;
+    rdfs:comment "Alasan pendaftar gugur di tahap administrasi" .
+
+kip:Keputusan a rdfs:Class ;
+    rdfs:subClassOf kip:Entitas ;
+    rdfs:comment "Keputusan akhir kelayakan" .
+
+kip:Dokumen a rdfs:Class ;
+    rdfs:subClassOf kip:Entitas ;
+    rdfs:comment "Dokumen yang wajib diserahkan" .
+
+kip:Manfaat a rdfs:Class ;
+    rdfs:subClassOf kip:Entitas ;
+    rdfs:comment "Komponen manfaat KIP Kuliah" .
+
+kip:BiayaPendidikan a rdfs:Class ;
+    rdfs:subClassOf kip:Manfaat ;
+    rdfs:comment "Batas biaya pendidikan (UKT/SPP) per semester" .
+
+kip:ZonaBiayaHidup a rdfs:Class ;
+    rdfs:subClassOf kip:Manfaat ;
+    rdfs:comment "Klaster bantuan biaya hidup per wilayah kampus" .
+
+kip:Jenjang a rdfs:Class ;
+    rdfs:subClassOf kip:Manfaat ;
+    rdfs:comment "Jenjang studi dan masa pemberian beasiswa" .
+
+kip:ProgramProfesi a rdfs:Class ;
+    rdfs:subClassOf kip:Manfaat ;
+    rdfs:comment "Program profesi lanjutan setelah sarjana" .
+
+kip:Rule a rdfs:Class ;
+    rdfs:subClassOf kip:Entitas ;
+    rdfs:comment "Aturan IF-THEN dari pakar / regulasi" .
+
+kip:Sumber a rdfs:Class ;
+    rdfs:subClassOf kip:Entitas ;
+    rdfs:comment "Sumber pengetahuan (regulasi resmi)" .
+
+# ---------------------------------------------------------------------------
+# Properti objek (tipe relasi Neo4j) dengan domain dan range
+# ---------------------------------------------------------------------------
+
+kip:COCOK_PRIORITAS a rdf:Property ;
+    rdfs:domain kip:Pendaftar ;
+    rdfs:range kip:KategoriEkonomi ;
+    rdfs:comment "Kategori ekonomi yang syaratnya dipenuhi pendaftar (C-01 s.d. C-08)" .
+
+kip:BERKATEGORI a rdf:Property ;
+    rdfs:subPropertyOf kip:COCOK_PRIORITAS ;   # rdfs7: kategori final juga kategori yang cocok
+    rdfs:domain kip:Pendaftar ;
+    rdfs:range kip:KategoriEkonomi ;
+    rdfs:comment "Kategori final = prioritas terkecil (MIN) di antara yang cocok (C-09)" .
+
+kip:GUGUR_KARENA a rdf:Property ;
+    rdfs:domain kip:Pendaftar ;
+    rdfs:range kip:AlasanGugur ;
+    rdfs:comment "Alasan gugur administrasi (B-02 s.d. B-07)" .
+
+kip:MEMILIKI_KONDISI a rdf:Property ;
+    rdfs:domain kip:Pendaftar ;
+    rdfs:range kip:KondisiKhusus ;
+    rdfs:comment "Kondisi afirmasi yang dimiliki pendaftar (D-01)" .
+
+kip:DIPUTUSKAN a rdf:Property ;
+    rdfs:domain kip:Pendaftar ;
+    rdfs:range kip:Keputusan ;
+    rdfs:comment "Keputusan akhir kelayakan (E-01 s.d. E-04)" .
+
+kip:WAJIB_MENYERAHKAN a rdf:Property ;
+    rdfs:domain kip:Pendaftar ;
+    rdfs:range kip:Dokumen ;
+    rdfs:comment "Dokumen yang wajib diserahkan (F-00 s.d. F-09)" .
+
+kip:MENDAPAT a rdf:Property ;
+    rdfs:domain kip:Pendaftar ;
+    rdfs:range kip:Manfaat ;
+    rdfs:comment "Komponen manfaat yang diterima (G-01 s.d. G-21)" .
+
+kip:KULIAH_DI a rdf:Property ;
+    rdfs:domain kip:Pendaftar ;
+    rdfs:range rdfs:Class ;
+    rdfs:comment "Jenis kampus tujuan. Kampus tidak dimodelkan sebagai individu, jadi objeknya adalah kelas kip:PTN atau kip:PTS (subkelas kip:PerguruanTinggi), sama seperti di Neo4j yang menunjuk node :Kelas." .
+
+kip:MEMICU a rdf:Property ;
+    rdfs:domain kip:Pendaftar ;
+    rdfs:range kip:Rule ;
+    rdfs:comment "Jejak penjelasan: aturan yang menyala untuk pendaftar ini. Di Neo4j relasi ini membawa properti urutan dan kesimpulan (padanannya di RDF: reifikasi atau RDF-star)." .
+
+kip:BERDASARKAN a rdf:Property ;
+    rdfs:domain kip:Rule ;
+    rdfs:range kip:Sumber ;
+    rdfs:comment "Regulasi yang menjadi dasar aturan. Di Neo4j relasi ini membawa properti bagian (halaman/pasal)." .
+
+kip:MENYIMPULKAN a rdf:Property ;
+    rdfs:domain kip:Rule ;
+    rdfs:comment "Konsep yang disimpulkan aturan (KategoriEkonomi, AlasanGugur, Keputusan, Dokumen, Manfaat, ...); range sengaja dibiarkan terbuka" .
+
+kip:BERLAKU_DI a rdf:Property ;
+    rdfs:domain kip:KategoriEkonomi ;
+    rdfs:range rdfs:Class ;
+    rdfs:comment "Jenis kampus tempat kategori berlaku; objeknya kelas kip:PTN atau kip:PTS (lihat kip:KULIAH_DI)" .
+
+kip:MEMBUTUHKAN a rdf:Property ;
+    rdfs:range kip:Dokumen ;
+    rdfs:comment "Dokumen bukti untuk sebuah kategori ekonomi atau kondisi khusus. Domainnya gabungan KategoriEkonomi dan KondisiKhusus; RDFS tidak punya union, jadi rdfs:domain tidak ditulis (dua rdfs:domain berarti irisan)." .
+
+# Properti pada relasi Neo4j. Di RDF dipasang pada pernyataan yang direifikasi (rdf:Statement).
+kip:urutan a rdf:Property ; rdfs:domain rdf:Statement ; rdfs:range xsd:integer ;
+    rdfs:comment "Urutan aturan menyala dalam jejak (MEMICU)" .
+kip:kesimpulan a rdf:Property ; rdfs:domain rdf:Statement ; rdfs:range xsd:string ;
+    rdfs:comment "Kesimpulan yang ditulis aturan saat menyala (MEMICU)" .
+kip:bagian a rdf:Property ; rdfs:domain rdf:Statement ; rdfs:range xsd:string ;
+    rdfs:comment "Halaman/pasal regulasi yang dirujuk (BERDASARKAN)" .
+
+# ---------------------------------------------------------------------------
+# Properti data kelas referensi
+# ---------------------------------------------------------------------------
+
+kip:kode a rdf:Property ; rdfs:range xsd:string ; rdfs:comment "Kode unik instance referensi (P1, DOK-KIP, PED, ...)" .
+kip:nama a rdf:Property ; rdfs:range xsd:string .
+
+kip:prioritas a rdf:Property ; rdfs:range xsd:integer ;
+    rdfs:comment "Urutan prioritas; dipakai pada KategoriEkonomi dan juga diturunkan ke Pendaftar (C-09)" .
+kip:keterangan a rdf:Property ; rdfs:domain kip:Dokumen ; rdfs:range xsd:string .
+kip:teks a rdf:Property ; rdfs:domain kip:AlasanGugur ; rdfs:range xsd:string .
+kip:properti a rdf:Property ; rdfs:domain kip:KondisiKhusus ; rdfs:range xsd:string ;
+    rdfs:comment "Nama properti boolean Pendaftar yang menandai kondisi ini" .
+
+kip:maks a rdf:Property ; rdfs:domain kip:BiayaPendidikan ; rdfs:range xsd:integer ; rdfs:comment "Batas biaya per semester (rupiah)" .
+kip:tingkat a rdf:Property ; rdfs:domain kip:BiayaPendidikan ; rdfs:range xsd:string .
+kip:kedokteran a rdf:Property ; rdfs:domain kip:BiayaPendidikan ; rdfs:range xsd:boolean .
+kip:zona a rdf:Property ; rdfs:range xsd:string ; rdfs:comment "Klaster biaya hidup; dipakai pada ZonaBiayaHidup dan Pendaftar" .
+kip:per_bulan a rdf:Property ; rdfs:domain kip:ZonaBiayaHidup ; rdfs:range xsd:integer .
+kip:maks_semester a rdf:Property ; rdfs:range xsd:integer ; rdfs:comment "Masa beasiswa; dipakai pada Jenjang dan ProgramProfesi" .
+kip:rumpun a rdf:Property ; rdfs:domain kip:ProgramProfesi ; rdfs:range xsd:string .
+
+kip:judul a rdf:Property ; rdfs:domain kip:Sumber ; rdfs:range xsd:string .
+kip:penerbit a rdf:Property ; rdfs:domain kip:Sumber ; rdfs:range xsd:string .
+kip:tahun a rdf:Property ; rdfs:domain kip:Sumber ; rdfs:range xsd:integer .
+
+kip:id a rdf:Property ; rdfs:range xsd:string ; rdfs:comment "Identitas Rule (A-01, ...) dan Pendaftar (UUID)" .
+kip:lapis a rdf:Property ; rdfs:domain kip:Rule ; rdfs:range xsd:string ; rdfs:comment "Lapis A-G" .
+kip:lapis_nama a rdf:Property ; rdfs:domain kip:Rule ; rdfs:range xsd:string .
+kip:strata a rdf:Property ; rdfs:domain kip:Rule ; rdfs:range xsd:integer ; rdfs:comment "Strata forward chaining (negasi dan agregat)" .
+kip:jika a rdf:Property ; rdfs:domain kip:Rule ; rdfs:range xsd:string .
+kip:maka a rdf:Property ; rdfs:domain kip:Rule ; rdfs:range xsd:string .
+kip:urut a rdf:Property ; rdfs:domain kip:Rule ; rdfs:range xsd:integer .
+
+# ---------------------------------------------------------------------------
+# Properti data Pendaftar: fakta masukan (dari formulir atau ekstraksi Gemini)
+# ---------------------------------------------------------------------------
+
+kip:tahun_daftar a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:integer .
+kip:tahun_lulus a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:integer .
+kip:status_seleksi a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:string ; rdfs:comment "Lulus | Tidak_Lulus" .
+kip:jenis_kampus a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:string ; rdfs:comment "PTN | PTS" .
+kip:nama_kampus a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:string .
+kip:nama_prodi a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:string .
+kip:akreditasi_prodi a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:string .
+kip:rumpun_prodi a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:string .
+kip:jenjang a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:string .
+kip:jenis_kelas a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:string .
+kip:beasiswa_lain a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:penghasilan a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:integer ; rdfs:comment "Penghasilan gabungan orang tua per bulan (rupiah)" .
+kip:anggota_keluarga a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:integer .
+kip:kip_sma a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:pkh a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:kks a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:dtks a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:terdata_p3ke a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:desil_p3ke a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:integer .
+kip:panti a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:sktm a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:bukti_sktm a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:asal_3t a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:asli_papua a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:anak_tki a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:bencana a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:konflik a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:korban_ham a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:korban_kekerasan a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean .
+kip:dibuat a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:dateTime ; rdfs:comment "Waktu evaluasi; di Neo4j disimpan sebagai string ISO" .
+
+# ---------------------------------------------------------------------------
+# Properti data Pendaftar: fakta turunan (ditulis oleh aturan saat inferensi)
+# ---------------------------------------------------------------------------
+
+kip:selisih_tahun a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:integer ; rdfs:comment "Lapis A" .
+kip:syarat_tahun_ok a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean ; rdfs:comment "Lapis A" .
+kip:prodi_terakreditasi a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean ; rdfs:comment "Lapis A" .
+kip:tingkat_akreditasi a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:integer ; rdfs:comment "Lapis A" .
+kip:penerima_bansos a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean ; rdfs:comment "Lapis A" .
+kip:miskin_penghasilan a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean ; rdfs:comment "Lapis A" .
+kip:miskin_sktm a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean ; rdfs:comment "Lapis A" .
+kip:rentan_p3ke a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean ; rdfs:comment "Lapis A" .
+kip:status_administrasi a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:string ; rdfs:comment "Lapis B" .
+kip:kategori_ekonomi a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:string ; rdfs:comment "Lapis C; salinan kode dari kip:BERKATEGORI" .
+kip:kategori_nama a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:string ; rdfs:comment "Lapis C" .
+kip:kondisi_khusus a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:boolean ; rdfs:comment "Lapis D" .
+kip:jalur a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:string ; rdfs:comment "Lapis E" .
+kip:keputusan a rdf:Property ; rdfs:domain kip:Pendaftar ; rdfs:range xsd:string ; rdfs:comment "Lapis E; salinan kode dari kip:DIPUTUSKAN" .

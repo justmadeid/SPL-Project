@@ -1,0 +1,15 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+node_modules/
+dist/
+*.tsbuildinfo
+*.log
+.claude/
+.codex/
+*.zip
+docs/pdf/.chrome-neo4j/
