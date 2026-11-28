@@ -138,7 +138,7 @@ def _add(label: str, rows: list[dict], key: str = "kode"):
 
 def seed():
     """Bangun ulang ontologi + basis aturan. Data :Pendaftar tidak disentuh."""
-    db.run("MATCH (n) WHERE NOT n:Pendaftar DETACH DELETE n")
+    db.run("MATCH (n) WHERE NOT n:Pendaftar AND NOT n:SeedKunci DETACH DELETE n")
     db.run("CREATE CONSTRAINT pendaftar_id IF NOT EXISTS FOR (p:Pendaftar) REQUIRE p.id IS UNIQUE")
     db.run("CREATE CONSTRAINT rule_id IF NOT EXISTS FOR (r:Rule) REQUIRE r.id IS UNIQUE")
 

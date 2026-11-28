@@ -77,6 +77,8 @@ export type Jejak = {
   maka: string;
   kesimpulan: string;
   sumber: Sumber[];
+  /** Keterangan asal untuk aturan turunan/negasi yang tidak merujuk regulasi langsung. */
+  turunan?: string | null;
 };
 export type Hasil = {
   id: string;

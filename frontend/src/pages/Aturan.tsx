@@ -100,6 +100,7 @@ export default function Aturan() {
                   <p className="mt-1.5 text-xs text-redup">
                     Strata {a.strata}
                     {a.sumber.length > 0 && <>; sumber: {a.sumber.map((s) => `${s.kode} ${s.bagian}`).join("; ")}</>}
+                    {a.sumber.length === 0 && a.turunan && <>; asal: {a.turunan}</>}
                   </p>
                 </div>
               </article>

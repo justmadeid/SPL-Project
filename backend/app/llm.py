@@ -203,7 +203,7 @@ BASIS PENGETAHUAN:
 def tanya(pesan: list[dict], aturan: list[dict], hasil: dict | None = None) -> str:
     kb = "\n".join(
         f"[{r['id']}] {r['nama']} | JIKA {r['jika']} | MAKA {r['maka']} | Sumber: "
-        + "; ".join(f"{s['kode']} {s['bagian']}" for s in r["sumber"])
+        + ("; ".join(f"{s['kode']} {s['bagian']}" for s in r["sumber"]) or r.get("turunan") or "-")
         for r in aturan
     )
     kb += ("\nSumber: PED = Pedoman Pendaftaran KIP Kuliah 2025; PS = Persesjen Kemendikbudristek No. 13/2023; "

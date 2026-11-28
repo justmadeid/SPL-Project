@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#jenis_kelas">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#MEMICU">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://pintukuliah.local/ontologi#Rule"/>
+    <rdfs:comment>Jejak penjelasan: aturan yang menyala untuk pendaftar ini. Di Neo4j relasi ini membawa properti urutan dan kesimpulan (padanannya di RDF: reifikasi atau RDF-star).</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#nama_prodi">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#nama_kampus">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#WAJIB_MENYERAHKAN">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://pintukuliah.local/ontologi#Dokumen"/>
+    <rdfs:comment>Dokumen yang wajib diserahkan (F-00 s.d. F-09)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#terdata_p3ke">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#jalur">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Lapis E</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#urut">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Rule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#MEMBUTUHKAN">
+    <rdfs:range rdf:resource="http://pintukuliah.local/ontologi#Dokumen"/>
+    <rdfs:comment>Dokumen bukti untuk sebuah kategori ekonomi atau kondisi khusus. Domainnya gabungan KategoriEkonomi dan KondisiKhusus; RDFS tidak punya union, jadi rdfs:domain tidak ditulis (dua rdfs:domain berarti irisan).</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#GUGUR_KARENA">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://pintukuliah.local/ontologi#AlasanGugur"/>
+    <rdfs:comment>Alasan gugur administrasi (B-02 s.d. B-07)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#status_seleksi">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Lulus | Tidak_Lulus</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#teks">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#AlasanGugur"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#maks">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#BiayaPendidikan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:comment>Batas biaya per semester (rupiah)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#kategori_nama">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Lapis C</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#bencana">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#rumpun_prodi">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#jenis_kampus">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>PTN | PTS</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#MEMILIKI_KONDISI">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://pintukuliah.local/ontologi#KondisiKhusus"/>
+    <rdfs:comment>Kondisi afirmasi yang dimiliki pendaftar (D-01)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#lapis">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Rule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Lapis A-G</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#bagian">
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Halaman/pasal regulasi yang dirujuk (BERDASARKAN)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#miskin_penghasilan">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:comment>Lapis A</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#kondisi_khusus">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:comment>Lapis D</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#strata">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Rule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:comment>Strata forward chaining (negasi dan agregat)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#BERKATEGORI">
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://pintukuliah.local/ontologi#COCOK_PRIORITAS">
+        <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+        <rdfs:range rdf:resource="http://pintukuliah.local/ontologi#KategoriEkonomi"/>
+        <rdfs:comment>Kategori ekonomi yang syaratnya dipenuhi pendaftar (C-01 s.d. C-08)</rdfs:comment>
+      </rdf:Property>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://pintukuliah.local/ontologi#KategoriEkonomi"/>
+    <rdfs:comment>Kategori final = prioritas terkecil (MIN) di antara yang cocok (C-09)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#id">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Identitas Rule (A-01, ...) dan Pendaftar (UUID)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#KULIAH_DI">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:comment>Jenis kampus tujuan. Kampus tidak dimodelkan sebagai individu, jadi objeknya adalah kelas kip:PTN atau kip:PTS (subkelas kip:PerguruanTinggi), sama seperti di Neo4j yang menunjuk node :Kelas.</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#DIPUTUSKAN">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://pintukuliah.local/ontologi#Keputusan"/>
+    <rdfs:comment>Keputusan akhir kelayakan (E-01 s.d. E-04)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#tingkat">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#BiayaPendidikan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#zona">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Klaster biaya hidup; dipakai pada ZonaBiayaHidup dan Pendaftar</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#penghasilan">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:comment>Penghasilan gabungan orang tua per bulan (rupiah)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#maka">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Rule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#dibuat">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:comment>Waktu evaluasi; di Neo4j disimpan sebagai string ISO</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#desil_p3ke">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#penerima_bansos">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:comment>Lapis A</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#kategori_ekonomi">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Lapis C; salinan kode dari kip:BERKATEGORI</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#rumpun">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#ProgramProfesi"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#sktm">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#anak_tki">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#konflik">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#anggota_keluarga">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#korban_ham">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#PendaftarTidakLayak">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:comment>Pendaftar yang disimpulkan tidak layak</rdfs:comment>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#lapis_nama">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Rule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#panti">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#tahun_lulus">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#asli_papua">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#beasiswa_lain">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#properti">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#KondisiKhusus"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Nama properti boolean Pendaftar yang menandai kondisi ini</rdfs:comment>
+  </rdf:Property>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#PTN">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#PerguruanTinggi"/>
+    <rdfs:comment>Perguruan Tinggi Negeri</rdfs:comment>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#prioritas">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:comment>Urutan prioritas; dipakai pada KategoriEkonomi dan juga diturunkan ke Pendaftar (C-09)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#kode">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Kode unik instance referensi (P1, DOK-KIP, PED, ...)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#jenjang">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#syarat_tahun_ok">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:comment>Lapis A</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#per_bulan">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#ZonaBiayaHidup"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#kip_sma">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#selisih_tahun">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:comment>Lapis A</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#penerbit">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Sumber"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#status_administrasi">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Lapis B</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#tingkat_akreditasi">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:comment>Lapis A</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#miskin_sktm">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:comment>Lapis A</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#kks">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#rentan_p3ke">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:comment>Lapis A</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#prodi_terakreditasi">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:comment>Lapis A</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#BERDASARKAN">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Rule"/>
+    <rdfs:range rdf:resource="http://pintukuliah.local/ontologi#Sumber"/>
+    <rdfs:comment>Regulasi yang menjadi dasar aturan. Di Neo4j relasi ini membawa properti bagian (halaman/pasal).</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#kesimpulan">
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Kesimpulan yang ditulis aturan saat menyala (MEMICU)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#pkh">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#urutan">
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:comment>Urutan aturan menyala dalam jejak (MEMICU)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#jika">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Rule"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#dtks">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#BERLAKU_DI">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#KategoriEkonomi"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:comment>Jenis kampus tempat kategori berlaku; objeknya kelas kip:PTN atau kip:PTS (lihat kip:KULIAH_DI)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#bukti_sktm">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#judul">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Sumber"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#tahun_daftar">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#keputusan">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Lapis E; salinan kode dari kip:DIPUTUSKAN</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#tahun">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Sumber"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Property>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#PendaftarLayak">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:comment>Pendaftar yang disimpulkan layak menerima KIP Kuliah</rdfs:comment>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#MENDAPAT">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://pintukuliah.local/ontologi#Manfaat"/>
+    <rdfs:comment>Komponen manfaat yang diterima (G-01 s.d. G-21)</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#kedokteran">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#BiayaPendidikan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#asal_3t">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#maks_semester">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:comment>Masa beasiswa; dipakai pada Jenjang dan ProgramProfesi</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#nama">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#PTS">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#PerguruanTinggi"/>
+    <rdfs:comment>Perguruan Tinggi Swasta</rdfs:comment>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#akreditasi_prodi">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#keterangan">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Dokumen"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#MENYIMPULKAN">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Rule"/>
+    <rdfs:comment>Konsep yang disimpulkan aturan (KategoriEkonomi, AlasanGugur, Keputusan, Dokumen, Manfaat, ...); range sengaja dibiarkan terbuka</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://pintukuliah.local/ontologi#korban_kekerasan">
+    <rdfs:domain rdf:resource="http://pintukuliah.local/ontologi#Pendaftar"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#Jenjang">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Manfaat"/>
+    <rdfs:comment>Jenjang studi dan masa pemberian beasiswa</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#Sumber">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Entitas"/>
+    <rdfs:comment>Sumber pengetahuan (regulasi resmi)</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#Rule">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Entitas"/>
+    <rdfs:comment>Aturan IF-THEN dari pakar / regulasi</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#BiayaPendidikan">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Manfaat"/>
+    <rdfs:comment>Batas biaya pendidikan (UKT/SPP) per semester</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#Pendaftar">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Entitas"/>
+    <rdfs:comment>Calon mahasiswa yang dinilai kelayakannya</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#Keputusan">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Entitas"/>
+    <rdfs:comment>Keputusan akhir kelayakan</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#Dokumen">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Entitas"/>
+    <rdfs:comment>Dokumen yang wajib diserahkan</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#AlasanGugur">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Entitas"/>
+    <rdfs:comment>Alasan pendaftar gugur di tahap administrasi</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#PerguruanTinggi">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Entitas"/>
+    <rdfs:comment>Perguruan tinggi tujuan</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#Entitas">
+    <rdfs:label>Entitas</rdfs:label>
+    <rdfs:comment>Akar hierarki ontologi KIP Kuliah</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#ZonaBiayaHidup">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Manfaat"/>
+    <rdfs:comment>Klaster bantuan biaya hidup per wilayah kampus</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#KategoriEkonomi">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Entitas"/>
+    <rdfs:comment>Urutan prioritas ekonomi penerima KIP Kuliah</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#ProgramProfesi">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Manfaat"/>
+    <rdfs:comment>Program profesi lanjutan setelah sarjana</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#Manfaat">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Entitas"/>
+    <rdfs:comment>Komponen manfaat KIP Kuliah</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://pintukuliah.local/ontologi#KondisiKhusus">
+    <rdfs:subClassOf rdf:resource="http://pintukuliah.local/ontologi#Entitas"/>
+    <rdfs:comment>Kondisi afirmasi / pertimbangan khusus</rdfs:comment>
+  </rdfs:Class>
+</rdf:RDF>

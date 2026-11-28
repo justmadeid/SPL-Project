@@ -35,6 +35,17 @@ def q(s: str) -> str:
 
 RULES: list[dict] = []
 
+# Asal aturan yang tidak merujuk regulasi secara langsung. Hanya keterangan untuk penjelasan
+# (halaman Aturan, Jejak, asisten); tidak dipakai mesin inferensi dan tidak disimpan di Neo4j.
+ASAL_TURUNAN: dict[str, str] = {
+    "B-03": "Validasi data (asumsi sistem): tahun lulus tidak boleh setelah tahun daftar; melengkapi B-02",
+    "B-09": "Aturan turunan dari B-02–B-07: gugur jika ada minimal satu alasan gugur",
+    "C-10": "Negasi C-01–C-08 (negation as failure): tidak ada prioritas ekonomi yang cocok",
+    "D-02": "Negasi D-01 (negation as failure): tidak ada kondisi khusus",
+    "E-01": "Aturan turunan dari B-09: gugur administrasi berarti tidak layak",
+    "E-04": "Aturan turunan dari C-10 dan D-02: tidak ada prioritas ekonomi maupun kondisi khusus",
+}
+
 
 def rule(id, strata, nama, jika, maka, sumber, cond, act="", kes=None, target=()):
     RULES.append({

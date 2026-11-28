@@ -5,7 +5,7 @@ import uuid
 from datetime import datetime, timezone
 
 from . import db
-from .rules import RULES, LAPIS, cypher
+from .rules import ASAL_TURUNAN, RULES, LAPIS, cypher
 
 INPUT_FIELDS = [
     "nama", "tahun_daftar", "tahun_lulus", "status_seleksi", "jenis_kampus", "nama_kampus", "akreditasi_prodi",
@@ -117,6 +117,7 @@ def hasil(pid: str) -> dict | None:
         pid=pid,
     )
     for t in trace:  # format angka rupiah dari Cypher: "Rp 3200000" -> "Rp3.200.000"
+        t["turunan"] = ASAL_TURUNAN.get(t["id"])
         t["kesimpulan"] = re.sub(r"Rp ?(\d{4,})", lambda mm: "Rp" + f"{int(mm.group(1)):,}".replace(",", "."), t["kesimpulan"])
     dok_order = ["DOK-AKUN", "DOK-KIP", "DOK-BANSOS", "DOK-P3KE", "DOK-PANTI", "DOK-PENGHASILAN", "DOK-SKTM", "DOK-KHUSUS"]
     dokumen = sorted(row["dokumen"], key=lambda d: dok_order.index(d["kode"]) if d["kode"] in dok_order else 99)
@@ -248,6 +249,8 @@ def daftar_aturan() -> list[dict]:
         ORDER BY r.urut
         """
     )
+    for r in rows:
+        r["turunan"] = ASAL_TURUNAN.get(r["id"])
     return rows
 
 

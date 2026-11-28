@@ -1,0 +1,19 @@
+# Hanya kode yang dibutuhkan build Vercel yang diunggah. Rahasia tidak pernah ikut.
+**/.env
+**/.env.*
+**/node_modules
+**/.venv
+**/__pycache__
+**/*.pyc
+frontend/dist
+backend/tests
+/docs
+/materi
+/Expert*
+/Instruksi*
+/frontend.zip
+/Dockerfile
+/.dockerignore
+/render.yaml
+/.claude
+/.codex

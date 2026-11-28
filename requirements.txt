@@ -1,0 +1,7 @@
+# Dependensi fungsi Python di Vercel (api/index.py). Versi mengikuti backend/uv.lock.
+fastapi==0.165.0
+starlette==1.10.0
+neo4j==6.4.1
+python-dotenv==1.2.4
+google-genai==3.6.1
+pydantic==2.14.4

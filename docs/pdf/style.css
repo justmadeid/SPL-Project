@@ -1,0 +1,38 @@
+/* Gaya PDF Panduan Pintu Kuliah. Dipakai docs/pdf/build.sh (pandoc → HTML → Chrome). */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+:root{--tinta:#1B2A6B;--tua:#101a45;--stabilo:#FFE14D;--garis:#dfe2ec;--redup:#5b6386;--kertas:#f6f7fb}
+@page{size:A4;margin:20mm 18mm 20mm 18mm;
+  @bottom-left{content:"Panduan Pintu Kuliah";font:500 8pt 'Plus Jakarta Sans';color:#8a90ab}
+  @bottom-right{content:counter(page);font:600 8pt 'Plus Jakarta Sans';color:#8a90ab}}
+@page:first{@bottom-left{content:none}@bottom-right{content:none}}
+html{font:10pt/1.6 'Plus Jakarta Sans',sans-serif;color:#1d2340;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0}
+.sampul{height:250mm;display:flex;flex-direction:column;justify-content:space-between;break-after:page}
+.sampul .atas{display:flex;align-items:center;gap:10px;color:var(--tinta);font-weight:800;font-size:13pt}
+.sampul h1{font-size:34pt;line-height:1.1;letter-spacing:-.02em;color:var(--tinta);margin:0 0 14px;border:0;padding:0}
+.sampul h1 span{background:linear-gradient(transparent 58%,var(--stabilo) 58%)}
+.sampul p{font-size:12pt;color:var(--redup);max-width:120mm;margin:0}
+.sampul .bawah{font-size:9pt;color:var(--redup);border-top:2px solid var(--tinta);padding-top:10px}
+h1{font-size:20pt;letter-spacing:-.02em;color:var(--tinta);margin:0 0 8px}
+h2{font-size:16pt;letter-spacing:-.015em;color:var(--tinta);break-before:page;margin:0 0 10px;padding-bottom:6px;border-bottom:2px solid var(--tinta)}
+h3{font-size:12pt;color:var(--tua);margin:20px 0 6px;break-after:avoid}
+h4{font-size:10.5pt;color:var(--tua);margin:16px 0 4px;break-after:avoid}
+p,li{orphans:3;widows:3}
+a{color:var(--tinta);text-decoration:underline;text-decoration-color:var(--stabilo);text-decoration-thickness:2px}
+code{font:8.6pt 'JetBrains Mono',monospace;background:var(--kertas);border:1px solid var(--garis);border-radius:3px;padding:0 3px}
+pre{background:var(--tua);color:#e8ebf7;border-radius:6px;padding:10px 12px;font-size:8.3pt;line-height:1.5;white-space:pre-wrap;break-inside:avoid}
+pre code{background:none;border:0;color:inherit;padding:0;font-size:inherit}
+table{width:100%;border-collapse:collapse;margin:8px 0 14px;font-size:8.6pt;line-height:1.45}
+thead{display:table-header-group}
+tr{break-inside:avoid}
+th{background:var(--tinta);color:#fff;text-align:left;font-weight:700;padding:5px 7px}
+td{padding:5px 7px;border-bottom:1px solid var(--garis);vertical-align:top}
+tbody tr:nth-child(even) td{background:#fafbfd}
+td code,th code{font-size:7.8pt}
+blockquote{margin:10px 0;padding:8px 12px;background:#fff8d1;border-left:4px solid var(--stabilo);border-radius:0 6px 6px 0}
+blockquote p{margin:4px 0}
+hr{display:none}
+code,pre{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+figure{margin:12px 0 16px;break-inside:avoid}
+figure img{width:100%;border:1px solid var(--garis);border-radius:6px;display:block}
+figcaption{font-size:8.4pt;color:var(--redup);margin-top:5px;line-height:1.45}

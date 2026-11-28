@@ -42,6 +42,7 @@ function Item({ t }: { t: JejakT }) {
               Sumber: {t.sumber.map((s) => `${s.judul} (${s.bagian})`).join("; ")}
             </p>
           )}
+          {t.sumber.length === 0 && t.turunan && <p className="text-redup">Asal: {t.turunan}</p>}
         </div>
       )}
     </li>

@@ -13,3 +13,4 @@ dist/
 .codex/
 *.zip
 docs/pdf/.chrome-neo4j/
+.vercel

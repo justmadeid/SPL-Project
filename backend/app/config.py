@@ -16,4 +16,6 @@ GEMINI_FALLBACK_MODELS = [m.strip() for m in os.getenv("GEMINI_FALLBACK_MODELS",
 
 PUBLIC_DEMO = os.getenv("PUBLIC_DEMO", "false").lower() == "true"
 ENABLE_SEED_ENDPOINT = os.getenv("ENABLE_SEED_ENDPOINT", "false").lower() == "true"
-LLM_ENABLED = bool(GEMINI_API_KEY) and not PUBLIC_DEMO
+# Di demo publik Gemini mati, kecuali diizinkan eksplisit (mis. deploy Vercel dengan key milik pemilik proyek).
+PUBLIC_LLM = os.getenv("PUBLIC_LLM", "false").lower() == "true"
+LLM_ENABLED = bool(GEMINI_API_KEY) and (not PUBLIC_DEMO or PUBLIC_LLM)

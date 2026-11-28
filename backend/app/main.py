@@ -1,30 +1,83 @@
 from contextlib import asynccontextmanager
+import threading
+import time
 from typing import Literal, Optional
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from neo4j.exceptions import Neo4jError
 from pydantic import BaseModel, Field, model_validator
 
 from . import config, db, engine, llm, ontology, presets
 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    try:
+_siap = False
+_kunci = threading.Lock()
+
+
+def siapkan_database():
+    """Muat ontologi + aturan ke Neo4j. Dipanggil saat startup, atau saat request pertama
+    di lingkungan serverless (Vercel) yang tidak menjalankan lifespan secara andal."""
+    global _siap
+    with _kunci:
+        if _siap:
+            return
         if config.PUBLIC_DEMO:
-            # Aura khusus demo: seed hanya sekali, bukan setiap cold start Render.
-            count = db.run("MATCH (r:Rule) RETURN count(r) AS n")[0]["n"]
-            if count == 0:
-                ontology.seed()
-            elif count != len(engine.RULES):
-                raise RuntimeError("Jumlah aturan database demo tidak sesuai versi aplikasi")
+            _seed_demo()
         else:
             ontology.seed()
             n = engine.inferensi_ulang_semua()
             print(f"[kipk] Ontologi & basis aturan dimuat ke Neo4j; inferensi ulang {n} pendaftar")
+        _siap = True
+
+
+def _seed_demo(tunggu_maks: float = 50.0):
+    """Seed database demo tepat sekali, walau beberapa instance serverless menyala bersamaan.
+
+    Kunci disimpan di database sebagai node (:SeedKunci {id: 1}) dengan constraint unik:
+    hanya instance yang berhasil membuatnya yang menjalankan seed; instance lain menunggu
+    sampai statusnya 'selesai'. Kunci 'berjalan' yang berumur > 2 menit dianggap macet.
+    """
+    try:
+        db.run("CREATE CONSTRAINT seed_kunci IF NOT EXISTS FOR (s:SeedKunci) REQUIRE s.id IS UNIQUE")
+    except Neo4jError:
+        pass  # dibuat bersamaan oleh instance lain
+    batas = time.monotonic() + tunggu_maks
+    while True:
+        st = db.run("MATCH (s:SeedKunci {id: 1}) RETURN s.status AS status, timestamp() - s.mulai AS umur")
+        if st and st[0]["status"] == "selesai":
+            n = db.run("MATCH (r:Rule) RETURN count(r) AS n")[0]["n"]
+            if n != len(engine.RULES):
+                raise RuntimeError("Jumlah aturan database demo tidak sesuai versi aplikasi")
+            return
+        if not st or st[0]["umur"] > 120_000:
+            if st:
+                db.run("MATCH (s:SeedKunci {id: 1}) WHERE s.status = 'berjalan' DELETE s")
+            try:
+                db.run("CREATE (:SeedKunci {id: 1, status: 'berjalan', mulai: timestamp()})")
+            except Neo4jError:
+                continue  # instance lain lebih dulu mengambil kunci
+            try:
+                ontology.seed()
+            except Exception:
+                db.run("MATCH (s:SeedKunci {id: 1}) DELETE s")
+                raise
+            db.run("MATCH (s:SeedKunci {id: 1}) SET s.status = 'selesai', s.selesai = timestamp()")
+            print("[kipk] Seed database demo selesai")
+            return
+        if time.monotonic() > batas:
+            raise RuntimeError("Seed database demo sedang dijalankan instance lain")
+        time.sleep(1)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    try:
+        siapkan_database()
     except Exception as e:  # tetap jalan agar /api/health bisa memberi tahu masalahnya
         print(f"[kipk] Gagal memuat ontologi ke Neo4j: {e}")
     yield
@@ -33,6 +86,19 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Sistem Pakar KIP Kuliah", lifespan=lifespan)
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+
+
+@app.middleware("http")
+async def pastikan_siap(request: Request, call_next):
+    # Seed malas untuk demo serverless: request /api pertama memastikan basis aturan sudah ada.
+    # Di mode lokal seed penuh hanya dijalankan lifespan saat server start.
+    if (config.PUBLIC_DEMO and not _siap and request.url.path.startswith("/api/")
+            and request.url.path != "/api/health"):
+        try:
+            await run_in_threadpool(siapkan_database)
+        except Exception as e:
+            print(f"[kipk] Gagal memuat ontologi ke Neo4j: {e}")
+    return await call_next(request)
 
 
 class FormInput(BaseModel):
