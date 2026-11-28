@@ -6,12 +6,12 @@ Proyek akhir mata kuliah Sistem Pakar Lanjut (MIK226410), Magister Kecerdasan Ar
 
 ## Anggota kelompok
 
-| Nama |
-|---|
-| Rafel Romero Hirawanto |
-| Made Garda Setiawan |
-| Taufik Nurrizqi |
-| Muhammad Amridhan Mahdi |
+| Nama | NIM |
+|---|---|
+| Rafel Romero Hirawanto | 25/573260/PPA/07216 |
+| Made Garda Setiawan | 25/573702/PPA/07218 |
+| Taufik Nurrizqi | 25/573844/PPA/07225 |
+| Muhammad Amridhan Mahdi | 25/575124/PPA/07270 |
 
 Dosen pengampu: Dr. techn. Kabul Kurniawan, S.Kom., M.Cs.
 
